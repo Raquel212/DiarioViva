@@ -1,0 +1,64 @@
+.cadastro-page {
+  display: flex;
+  width: 100%;
+  min-height: 100vh;
+  background-color: #fff;
+}
+
+.cadastro-branding {
+  display: none; 
+  width: 50%;
+  background: linear-gradient(to bottom right, #0d9488, #14b8a6);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 3rem;
+  text-align: center;
+}
+
+.cadastro-form-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+.form-group .radio-group {
+  display: flex;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+.form-group .radio-control {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: 1px solid #d1d5db;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  flex: 1;
+}
+
+.form-group .radio-control input {
+  display: none;
+}
+
+.form-group .radio-control:has(input:checked) {
+  background-color: #e0f2f1;
+  border-color: #14b8a6;
+  color: #0d9488;
+}
+
+@media (min-width: 768px) {
+  .cadastro-branding {
+    display: flex;
+  }
+  .cadastro-form-wrapper {
+    width: 50%;
+  }
+}
