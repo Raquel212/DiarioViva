@@ -1,6 +1,8 @@
 import './Login.css';
 import { useState } from 'react';
 import { Eye, EyeOff } from 'lucide-react';
+import Header from '../../components/Header/Header';
+import Footer from '../../components/Footer/Footer';
 
 function Login() {
   const [mostrarSenha, setMostrarSenha] = useState(false);
@@ -12,6 +14,8 @@ function Login() {
   };
 
   return (
+    <>
+    <Header />
     <div className="login-page">
       <div className="login-branding">
         <div>
@@ -77,6 +81,9 @@ function Login() {
         </div>
       </div>
     </div>
+    <Footer />
+    </>
+    
   );
 }
 
