@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const navLinks = [{ title: "Início", href: "/" }, { title: "Sobre", href: "#sobre" }, { title: "Funcionalidades", href: "#funcionalidades" }, { title: "Depoimentos", href: "#depoimentos" }];
+  const navLinks = [{ title: "Início", href: "/" }, { title: "Sobre", href: "/#sobre" }, { title: "Funcionalidades", href: "/#funcionalidades" }, { title: "Depoimentos", href: "/#depoimentos" }];
 
   return (
     <header className="header">
