@@ -1,5 +1,10 @@
 import './Login.css';
+import { useState } from 'react';
+import { Eye, EyeOff } from 'lucide-react';
+
 function Login() {
+  const [mostrarSenha, setMostrarSenha] = useState(false);
+
   const handleSubmit = (event) => {
     event.preventDefault();
     // Lógica de autenticação
@@ -34,9 +39,28 @@ function Login() {
               <label htmlFor="email">E-mail</label>
               <input type="email" id="email" className="form-control" placeholder="seu@email.com" required />
             </div>
-            <div className="form-group">
-              <label htmlFor="password">Senha</label>
-              <input type="password" id="password" className="form-control" placeholder="••••••••" required />
+            <div className="form-group" style={{ position: 'relative' }}>
+                  <label htmlFor="senha">Senha</label>
+                  <input
+                    type={mostrarSenha ? 'text' : 'password'}
+                    id="senha"
+                    className="form-control"
+                    placeholder="••••••••"
+                    required
+                  />
+                  <span
+                    onClick={() => setMostrarSenha(!mostrarSenha)}
+                    style={{
+                      position: 'absolute',
+                      top: '45px',
+                      right: '10px',
+                      cursor: 'pointer',
+                      color: '#555',
+                      zIndex: 1
+                    }}
+                  >
+                    {mostrarSenha ? <EyeOff size={20} /> : <Eye size={20} />}
+                  </span>
             </div>
             <div className="form-options">
               <div className="checkbox-group">
@@ -48,7 +72,7 @@ function Login() {
             <button type="submit" className="login-submit-button">Entrar</button>
           </form>
           <div className="login-footer">
-            <p>Ainda não tem uma conta? <a href="#">Cadastre-se</a></p>
+            <p>Ainda não tem uma conta? <a href="/cadastro">Cadastre-se</a></p>
           </div>
         </div>
       </div>
