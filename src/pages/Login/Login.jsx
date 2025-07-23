@@ -32,7 +32,7 @@ function Login() {
       localStorage.setItem("tipoUsuario", usuario.tipoUsuario);
 
       if (usuario.tipoUsuario === "PACIENTE") {
-        navigate("/homePaciente");
+        navigate("/editarPerfilPaciente");
       } else if (usuario.tipoUsuario === "PROFISSIONAL") {
         navigate("/homeProfissional");
       } else {
