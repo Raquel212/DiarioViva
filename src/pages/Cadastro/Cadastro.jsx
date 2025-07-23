@@ -31,7 +31,7 @@ function Cadastro() {
     };
 
     try {
-      const resposta = await api.post("/usuarios", dadosDoUsuario); // ajuste a URL conforme a rota da sua API
+      const resposta = await api.post("/api/usuario", dadosDoUsuario); // ajuste a URL conforme a rota da sua API
       console.log("Usuário cadastrado:", resposta.data);
       setMensagemSucesso("Cadastro realizado com sucesso! Você já pode fazer o login.");
       setNome("");
