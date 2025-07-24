@@ -17,7 +17,6 @@ function EditarPerfilPaciente() {
   const [isNewProfile, setIsNewProfile] = useState(false); 
   const [mensagem, setMensagem] = useState("");
   const [erro, setErro] = useState("");
-  const [carregando, setCarregando] = useState(true);
 
   useEffect(() => {
     async function carregarPerfil() {
@@ -32,9 +31,7 @@ function EditarPerfilPaciente() {
       } catch (err) {
         console.error("Erro ao carregar perfil:", err);
         setErro("Erro ao carregar dados do perfil.");
-      } finally {
-        setCarregando(false);
-      }
+      } 
     }
 
     carregarPerfil();
@@ -71,8 +68,6 @@ function EditarPerfilPaciente() {
       setErro("Não foi possível salvar as alterações no perfil.");
     }
   };
-
-  if (carregando) return <p>Carregando...</p>;
 
   return (
     <div className="profile-page-container">

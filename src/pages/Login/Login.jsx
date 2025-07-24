@@ -25,21 +25,19 @@ function Login() {
         senha,
       });
 
-
-      const { token, usuario } = resposta.data;
+      const { token, tipoUsuario, perfilCompleto } = resposta.data;
 
       localStorage.setItem("token", token);
-      localStorage.setItem("tipoUsuario", usuario.tipoUsuario);
+      localStorage.setItem("tipoUsuario", tipoUsuario);
 
-
-      if (usuario.tipoUsuario === "PACIENTE") {
-        if (usuario.perfilCompleto) {
+      if (tipoUsuario === "PACIENTE") {
+        if (perfilCompleto) {
           navigate("/homePaciente");
         } else {
           navigate("/editarPerfilPaciente");
         }
-      } else if (usuario.tipoUsuario === "PROFISSIONAL") {
-        if (usuario.perfilCompleto) {
+      } else if (tipoUsuario === "PROFISSIONAL") {
+        if (perfilCompleto) {
           navigate("/homeProfissional");
         } else {
           navigate("/editarPerfilProfissional");
@@ -67,6 +65,7 @@ function Login() {
     <>
       <Header />
       <div className="login-page">
+        {/* O resto do seu código JSX continua o mesmo... */}
         <div className="login-branding">
           <div>
             <div className="branding-logo"></div>
@@ -136,9 +135,7 @@ function Login() {
                 </div>
                 <a href="#">Esqueceu a senha?</a>
               </div>
-
               {mensagemErro && <p className="mensagem-erro">{mensagemErro}</p>}
-
               <button
                 type="submit"
                 className="login-submit-button"

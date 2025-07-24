@@ -10,35 +10,51 @@ function EditarPerfilProfissional() {
   const [perfil, setPerfil] = useState({
     crm: "",
     especialidade: "",
-    uf: "",
+    ufCrm: "",
   });
 
-  const [isNewProfile, setIsNewProfile] = useState(false);
   const [mensagem, setMensagem] = useState("");
   const [erro, setErro] = useState("");
-  const [carregando, setCarregando] = useState(true);
+
 
   const ufs = [
-    "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS",
-    "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC",
-    "SP", "SE", "TO",
+    "AC",
+    "AL",
+    "AP",
+    "AM",
+    "BA",
+    "CE",
+    "DF",
+    "ES",
+    "GO",
+    "MA",
+    "MT",
+    "MS",
+    "MG",
+    "PA",
+    "PB",
+    "PR",
+    "PE",
+    "PI",
+    "RJ",
+    "RN",
+    "RS",
+    "RO",
+    "RR",
+    "SC",
+    "SP",
+    "SE",
+    "TO",
   ];
 
   useEffect(() => {
     async function carregarPerfil() {
       try {
         const resposta = await api.get("api/perfil/profissional");
-
-        if (!resposta.data.crm) {
-          setIsNewProfile(true);
-        }
-
         setPerfil(resposta.data);
       } catch (err) {
         console.error("Erro ao carregar perfil:", err);
         setErro("Erro ao carregar dados do perfil.");
-      } finally {
-        setCarregando(false);
       }
     }
 
@@ -56,22 +72,14 @@ function EditarPerfilProfissional() {
     setErro("");
 
     try {
-      if (isNewProfile) {
-        await api.post("api/perfil/profissional", perfil);
-        setMensagem("Perfil criado com sucesso!");
-      } else {
-        await api.put("api/perfil/profissional", perfil);
-        setMensagem("Perfil atualizado com sucesso!");
-      }
-
+      await api.put("api/perfil/profissional", perfil);
+      setMensagem("Perfil salvo com sucesso!");
       navigate("/homeProfissional");
     } catch (err) {
       console.error("Erro ao salvar perfil:", err);
       setErro("Não foi possível salvar as alterações no perfil.");
     }
   };
-
-  if (carregando) return <p>Carregando...</p>;
 
   return (
     <div className="profile-page-container">
@@ -116,16 +124,20 @@ function EditarPerfilProfissional() {
                   />
                 </div>
                 <div className="form-group">
-                  <label htmlFor="uf">UF</label>
+                  <label htmlFor="ufCrm">UF</label>
                   <select
-                    id="uf"
+                    id="ufCrm"
                     className="form-control"
-                    value={perfil.uf || ""}
+                    value={perfil.ufCrm || ""}
                     onChange={handleChange}
                   >
-                    <option value="" disabled>Selecione</option>
+                    <option value="" disabled>
+                      Selecione
+                    </option>
                     {ufs.map((uf) => (
-                      <option key={uf} value={uf}>{uf}</option>
+                      <option key={uf} value={uf}>
+                        {uf}
+                      </option>
                     ))}
                   </select>
                 </div>
