@@ -1,10 +1,10 @@
-import './Login.css';
-import { useState } from 'react';
-import { Eye, EyeOff } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
-import Header from '../../components/Header/Header';
-import Footer from '../../components/Footer/Footer';
-import api from '../../services/api';
+import { Eye, EyeOff } from "lucide-react";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import Footer from "../../components/Footer/Footer";
+import Header from "../../components/Header/Header";
+import api from "../../services/api";
+import "./Login.css";
 
 function Login() {
   const navigate = useNavigate();
@@ -22,28 +22,40 @@ function Login() {
     try {
       const resposta = await api.post("api/login", {
         email,
-        senha
+        senha,
       });
+
 
       const { token, usuario } = resposta.data;
 
-      
       localStorage.setItem("token", token);
       localStorage.setItem("tipoUsuario", usuario.tipoUsuario);
 
+
       if (usuario.tipoUsuario === "PACIENTE") {
-        navigate("/editarPerfilPaciente");
+        if (usuario.perfilCompleto) {
+          navigate("/homePaciente");
+        } else {
+          navigate("/editarPerfilPaciente");
+        }
       } else if (usuario.tipoUsuario === "PROFISSIONAL") {
-        navigate("/homeProfissional");
+        if (usuario.perfilCompleto) {
+          navigate("/homeProfissional");
+        } else {
+          navigate("/editarPerfilProfissional");
+        }
       } else {
         setMensagemErro("Tipo de usuário não reconhecido.");
       }
-
     } catch (erro) {
       if (erro.response?.data?.message) {
         setMensagemErro(erro.response.data.message);
+      } else if (erro.response?.status === 403) {
+        setMensagemErro("Email ou senha inválidos. Tente novamente.");
       } else {
-        setMensagemErro("Erro ao conectar. Verifique seus dados e tente novamente.");
+        setMensagemErro(
+          "Erro ao conectar. Verifique seus dados e tente novamente."
+        );
       }
       console.error("Erro no login:", erro);
     } finally {
@@ -58,14 +70,16 @@ function Login() {
         <div className="login-branding">
           <div>
             <div className="branding-logo"></div>
-            <img 
-              src="https://placehold.co/800x800/ffffff/0d9488?text=Live\nDiary" 
-              alt="Ilustração de bem-estar" 
+            <img
+              src="https://placehold.co/800x800/ffffff/0d9488?text=Live\nDiary"
+              alt="Ilustração de bem-estar"
               className="branding-image"
             />
             <div className="branding-text">
               <h2>Transforme seus objetivos em hábitos.</h2>
-              <p>Sua jornada de saúde conectada e apoiada pelo seu profissional.</p>
+              <p>
+                Sua jornada de saúde conectada e apoiada pelo seu profissional.
+              </p>
             </div>
           </div>
         </div>
@@ -73,25 +87,27 @@ function Login() {
           <div className="login-container">
             <div className="login-header">
               <h1 className="login-title">Bem-vindo(a) de volta!</h1>
-              <p className="login-subtitle">Insira seus dados para acessar a plataforma.</p>
+              <p className="login-subtitle">
+                Insira seus dados para acessar a plataforma.
+              </p>
             </div>
             <form className="login-form" onSubmit={handleSubmit}>
               <div className="form-group">
                 <label htmlFor="email">E-mail</label>
-                <input 
-                  type="email" 
-                  id="email" 
-                  className="form-control" 
-                  placeholder="seu@email.com" 
+                <input
+                  type="email"
+                  id="email"
+                  className="form-control"
+                  placeholder="seu@email.com"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  required 
+                  required
                 />
               </div>
-              <div className="form-group" style={{ position: 'relative' }}>
+              <div className="form-group" style={{ position: "relative" }}>
                 <label htmlFor="senha">Senha</label>
                 <input
-                  type={mostrarSenha ? 'text' : 'password'}
+                  type={mostrarSenha ? "text" : "password"}
                   id="senha"
                   className="form-control"
                   placeholder="••••••••"
@@ -102,12 +118,12 @@ function Login() {
                 <span
                   onClick={() => setMostrarSenha(!mostrarSenha)}
                   style={{
-                    position: 'absolute',
-                    top: '45px',
-                    right: '10px',
-                    cursor: 'pointer',
-                    color: '#555',
-                    zIndex: 1
+                    position: "absolute",
+                    top: "45px",
+                    right: "10px",
+                    cursor: "pointer",
+                    color: "#555",
+                    zIndex: 1,
                   }}
                 >
                   {mostrarSenha ? <EyeOff size={20} /> : <Eye size={20} />}
@@ -123,16 +139,18 @@ function Login() {
 
               {mensagemErro && <p className="mensagem-erro">{mensagemErro}</p>}
 
-              <button 
-                type="submit" 
-                className="login-submit-button" 
+              <button
+                type="submit"
+                className="login-submit-button"
                 disabled={carregando}
               >
                 {carregando ? "Entrando..." : "Entrar"}
               </button>
             </form>
             <div className="login-footer">
-              <p>Ainda não tem uma conta? <a href="/cadastro">Cadastre-se</a></p>
+              <p>
+                Ainda não tem uma conta? <a href="/cadastro">Cadastre-se</a>
+              </p>
             </div>
           </div>
         </div>
