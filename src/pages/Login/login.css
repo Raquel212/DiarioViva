@@ -1,7 +1,7 @@
 .login-page {
   display: flex;
   width: 100%;
-  min-height: 100vh;
+  min-height: 83vh;
   background-color: #fff;
 }
 
@@ -161,6 +161,10 @@
 
 .login-footer a:hover {
   text-decoration: underline;
+}
+
+#remember-me {
+  margin-bottom: 4px;
 }
 
 /* Media query para telas menores */

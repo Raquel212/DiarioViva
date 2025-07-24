@@ -65,7 +65,6 @@ function Login() {
     <>
       <Header />
       <div className="login-page">
-        {/* O resto do seu código JSX continua o mesmo... */}
         <div className="login-branding">
           <div>
             <div className="branding-logo"></div>
@@ -118,7 +117,7 @@ function Login() {
                   onClick={() => setMostrarSenha(!mostrarSenha)}
                   style={{
                     position: "absolute",
-                    top: "45px",
+                    top: "41px",
                     right: "10px",
                     cursor: "pointer",
                     color: "#555",

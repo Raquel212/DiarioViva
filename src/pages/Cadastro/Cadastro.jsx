@@ -4,7 +4,7 @@ import { Eye, EyeOff } from 'lucide-react';
 import './cadastro.css';
 import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer';
-import api from '../../services/api'; // Aqui você usará essa instância do axios
+import api from '../../services/api'; 
 
 function Cadastro() {
   const navigate = useNavigate();
@@ -119,7 +119,7 @@ function Cadastro() {
                   onClick={() => setMostrarSenha(!mostrarSenha)}
                   style={{
                     position: 'absolute',
-                    top: '45px',
+                    top: '41px',
                     right: '10px',
                     cursor: 'pointer',
                     color: '#555'
