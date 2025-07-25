@@ -20,7 +20,7 @@ function Login() {
     setMensagemErro("");
 
     try {
-      const resposta = await api.post("api/login", {
+      const resposta = await api.post("login ", {
         email,
         senha,
       });

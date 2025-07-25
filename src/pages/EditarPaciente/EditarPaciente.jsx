@@ -21,7 +21,7 @@ function EditarPerfilPaciente() {
   useEffect(() => {
     async function carregarPerfil() {
       try {
-        const resposta = await api.get("api/perfil/paciente");
+        const resposta = await api.get("perfil/paciente");
 
         if (resposta.data.peso === null) {
           setIsNewProfile(true);
@@ -55,10 +55,10 @@ function EditarPerfilPaciente() {
 
     try {
       if (isNewProfile) {
-        await api.post("api/perfil/paciente", dadosParaSalvar);
+        await api.post("perfil/paciente", dadosParaSalvar);
         setMensagem("Perfil criado com sucesso!");
       } else {
-        await api.put("api/perfil/paciente", dadosParaSalvar);
+        await api.put("perfil/paciente", dadosParaSalvar);
         setMensagem("Perfil atualizado com sucesso!");
       }
 

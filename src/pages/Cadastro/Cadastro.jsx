@@ -31,7 +31,7 @@ function Cadastro() {
     };
 
     try {
-      const resposta = await api.post("https://saude-conectada-api.onrender.com/api/usuario", dadosDoUsuario); // ajuste a URL conforme a rota da sua API
+      const resposta = await api.post("usuario", dadosDoUsuario);
       console.log("Usuário cadastrado:", resposta.data);
       setMensagemSucesso("Cadastro realizado com sucesso! Você já pode fazer o login.");
       setNome("");

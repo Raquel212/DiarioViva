@@ -50,7 +50,7 @@ function EditarPerfilProfissional() {
   useEffect(() => {
     async function carregarPerfil() {
       try {
-        const resposta = await api.get("api/perfil/profissional");
+        const resposta = await api.get("perfil/profissional");
         setPerfil(resposta.data);
       } catch (err) {
         console.error("Erro ao carregar perfil:", err);
@@ -72,7 +72,7 @@ function EditarPerfilProfissional() {
     setErro("");
 
     try {
-      await api.put("api/perfil/profissional", perfil);
+      await api.put("perfil/profissional", perfil);
       setMensagem("Perfil salvo com sucesso!");
       navigate("/homeProfissional");
     } catch (err) {
