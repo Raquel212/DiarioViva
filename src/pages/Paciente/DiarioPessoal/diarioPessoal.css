@@ -1,0 +1,155 @@
+.diario-container-diarioPessoal {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 1.5rem;
+    background-color: #f0fdfa;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.diario-header-diarioPessoal {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 2rem;
+}
+
+.diario-header-diarioPessoal h2 {
+    font-size: 1.5rem;
+    color: #0d9488;
+    margin: 0;
+}
+
+.diario-icon-diarioPessoal {
+    flex-shrink: 0;
+}
+
+.diario-form-section-diarioPessoal {
+    margin-bottom: 2rem;
+    background-color: #ffffff;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+.diario-form-header-diarioPessoal {
+    margin-bottom: 1rem;
+}
+
+.diario-form-header-diarioPessoal h3 {
+    margin: 0;
+    font-size: 1.125rem;
+    color: #374151;
+}
+
+.diario-form-header-diarioPessoal p {
+    margin: 0.25rem 0 0;
+    color: #6b7280;
+    font-size: 0.9rem;
+}
+
+.diario-form-diarioPessoal textarea {
+    width: 100%;
+    min-height: 150px;
+    padding: 1rem;
+    border: 1px solid #d1d5db;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    box-sizing: border-box;
+    resize: vertical;
+    margin-bottom: 1rem;
+}
+
+.diario-actions-diarioPessoal {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.mood-selector-diarioPessoal {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.mood-btn-diarioPessoal {
+    background: #f3f4f6;
+    border: 1px solid transparent;
+    border-radius: 50%;
+    padding: 0.5rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.mood-btn-diarioPessoal:hover {
+    background: #e5e7eb;
+}
+
+.mood-btn-diarioPessoal.selected {
+    border-color: #14b8a6;
+    background-color: #f0fdfa;
+}
+
+.action-btn-diarioPessoal {
+    background-color: #14b8a6;
+    color: white;
+    border: none;
+    padding: 0.75rem 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    width: 150px;
+}
+
+.action-btn-diarioPessoal:hover {
+    background-color: #0d9488;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.divider-diarioPessoal {
+    border: none;
+    border-top: 1px solid #e5e7eb;
+    margin: 2rem 0;
+}
+
+.diario-history-diarioPessoal {
+    background-color: #ffffff;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+.diario-history-diarioPessoal h3 {
+    font-size: 1.125rem;
+    color: #374151;
+    margin-bottom: 1rem;
+}
+
+.diario-history-list-diarioPessoal {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.diario-entry-diarioPessoal {
+    background-color: #f9fafb;
+    padding: 1rem 1.25rem;
+    border-radius: 0.5rem;
+    border-left: 4px solid #9ca3af;
+}
+
+.diario-entry-header-diarioPessoal {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.diario-entry-header-diarioPessoal span {
+    font-weight: 500;
+    color: #4b5563;
+}
+
+.diario-entry-body-diarioPessoal {
+    color: #6b7280;
+    line-height: 1.5;
+}
