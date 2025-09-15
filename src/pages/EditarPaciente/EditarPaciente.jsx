@@ -1,26 +1,35 @@
-import { Save } from "lucide-react";
+import { Save, Trash2 } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./editarPaciente.css";
+import Footer from "../../components/Footer/Footer";
+import HeaderPaciente from "../../components/HeaderPaciente/HeaderPaciente";
 
 function EditarPerfilPaciente() {
   const navigate = useNavigate();
 
   const [perfil, setPerfil] = useState({
+    nomeCompleto: "Paciente",
+    email: "paciente@email.com",
     peso: "",
     altura: "",
     dataNascimento: "",
     comorbidades: "",
   });
 
-  const [mensagem, setMensagem] = useState("");
   const [erro, setErro] = useState("");
+  const [toast, setToast] = useState("");
+  const [showModal, setShowModal] = useState(false); 
 
   useEffect(() => {
     try {
       const dadosSalvos = localStorage.getItem("perfilPaciente");
       if (dadosSalvos) {
-        setPerfil(JSON.parse(dadosSalvos));
+        const dados = JSON.parse(dadosSalvos);
+        setPerfil((prev) => ({
+          ...prev,
+          ...dados,
+        }));
       }
     } catch (err) {
       console.error("Erro ao carregar perfil:", err);
@@ -35,7 +44,6 @@ function EditarPerfilPaciente() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setMensagem("");
     setErro("");
 
     try {
@@ -46,7 +54,8 @@ function EditarPerfilPaciente() {
       };
 
       localStorage.setItem("perfilPaciente", JSON.stringify(dadosParaSalvar));
-      setMensagem("Perfil salvo com sucesso!");
+      setToast("Dados atualizados com sucesso!");
+      setTimeout(() => setToast(""), 3000);
 
       setTimeout(() => {
         navigate("/homePaciente");
@@ -57,83 +66,152 @@ function EditarPerfilPaciente() {
     }
   };
 
+  const handleDeleteAccount = () => {
+    localStorage.clear();
+    navigate("/login");
+  };
+
   return (
-    <div className="profile-page-container">
-      <div className="profile-card">
-        <div className="profile-card-header">
-          <h2>Configurações do Perfil</h2>
-        </div>
-        <div className="profile-card-body">
-          <div className="avatar-section">
-            <img
-              src="https://placehold.co/100x100/a7f3d0/1f2937?text=MS"
-              alt="Avatar"
-              className="avatar-image"
-            />
+    <>
+      <HeaderPaciente />
+
+      {/* Toast */}
+      {toast && <div className="toast">{toast}</div>}
+
+      <div className="profile-page-container-EditarPaciente">
+        <div className="profile-card-EditarPaciente">
+          <div className="profile-card-header-EditarPaciente">
+            <h2>Configurações do Perfil</h2>
           </div>
-          <div className="form-section">
-            <form onSubmit={handleSubmit}>
-              <h3>Informações Pessoais</h3>
-              <div className="form-group">
-                <label htmlFor="dataNascimento">Data de Nascimento</label>
-                <input
-                  type="date"
-                  id="dataNascimento"
-                  className="form-control"
-                  value={perfil.dataNascimento || ""}
-                  onChange={handleChange}
-                />
-              </div>
-              <div className="form-control-grid">
-                <div className="form-group">
-                  <label htmlFor="peso">Peso (kg)</label>
+          <div className="profile-card-body-EditarPaciente">
+            <div className="avatar-section-EditarPaciente">
+              <img
+                src="https://i.pravatar.cc/150?u=Paciente"
+                alt="Avatar"
+                className="avatar-image-EditarPaciente"
+              />
+            </div>
+            <div className="form-section-EditarPaciente">
+              <form onSubmit={handleSubmit}>
+                <h3>Informações Pessoais</h3>
+
+                <div className="form-group-EditarPaciente">
+                  <label htmlFor="nomeCompleto">Nome Completo</label>
                   <input
-                    type="number"
-                    step="0.1"
-                    id="peso"
-                    className="form-control"
-                    value={perfil.peso || ""}
-                    onChange={handleChange}
-                    placeholder="Ex: 65.5"
+                    type="text"
+                    id="nomeCompleto"
+                    className="form-control-EditarPaciente"
+                    value={perfil.nomeCompleto || ""}
+                    readOnly
                   />
                 </div>
-                <div className="form-group">
-                  <label htmlFor="altura">Altura (cm)</label>
+
+                <div className="form-group-EditarPaciente">
+                  <label htmlFor="email">E-mail</label>
                   <input
-                    type="number"
-                    id="altura"
-                    className="form-control"
-                    value={perfil.altura || ""}
-                    onChange={handleChange}
-                    placeholder="Ex: 168"
+                    type="email"
+                    id="email"
+                    className="form-control-EditarPaciente"
+                    value={perfil.email || ""}
+                    readOnly
                   />
                 </div>
-              </div>
-              <div className="form-group">
-                <label htmlFor="comorbidades">
-                  Comorbidades (alergias, etc.)
-                </label>
-                <textarea
-                  id="comorbidades"
-                  className="form-control"
-                  value={perfil.comorbidades || ""}
-                  onChange={handleChange}
-                  placeholder="Descreva aqui informações relevantes..."
-                ></textarea>
-              </div>
-              {mensagem && <p style={{ color: "green" }}>{mensagem}</p>}
-              {erro && <p style={{ color: "red" }}>{erro}</p>}
-              <div className="profile-actions">
-                <button type="submit" className="save-button">
-                  <Save size={18} />
-                  Salvar Alterações
-                </button>
-              </div>
-            </form>
+
+                <div className="form-group-EditarPaciente">
+                  <label htmlFor="dataNascimento">Data de Nascimento</label>
+                  <input
+                    type="date"
+                    id="dataNascimento"
+                    className="form-control-EditarPaciente"
+                    value={perfil.dataNascimento || ""}
+                    onChange={handleChange}
+                  />
+                </div>
+
+                <div className="form-control-grid-EditarPaciente">
+                  <div className="form-group-EditarPaciente">
+                    <label htmlFor="peso">Peso (kg)</label>
+                    <input
+                      type="number"
+                      step="0.1"
+                      id="peso"
+                      className="form-control-EditarPaciente"
+                      value={perfil.peso || ""}
+                      onChange={handleChange}
+                      placeholder="Ex: 65.5"
+                    />
+                  </div>
+                  <div className="form-group-EditarPaciente">
+                    <label htmlFor="altura">Altura (cm)</label>
+                    <input
+                      type="number"
+                      id="altura"
+                      className="form-control-EditarPaciente"
+                      value={perfil.altura || ""}
+                      onChange={handleChange}
+                      placeholder="Ex: 168"
+                    />
+                  </div>
+                </div>
+
+                <div className="form-group-EditarPaciente">
+                  <label htmlFor="comorbidades">
+                    Comorbidades (alergias, etc.)
+                  </label>
+                  <textarea
+                    id="comorbidades"
+                    className="form-control-EditarPaciente"
+                    value={perfil.comorbidades || ""}
+                    onChange={handleChange}
+                    placeholder="Descreva aqui informações relevantes..."
+                  ></textarea>
+                </div>
+
+                {erro && <p style={{ color: "red" }}>{erro}</p>}
+
+                <div className="profile-actions-EditarPaciente">
+                  <button type="submit" className="save-button-EditarPaciente">
+                    <Save size={18} />
+                    Salvar Alterações
+                  </button>
+                  <button
+                    type="button"
+                    className="delete-button"
+                    onClick={() => setShowModal(true)}
+                  >
+                    <Trash2 size={18} />
+                    Excluir Conta
+                  </button>
+                </div>
+              </form>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+
+      {/* Modal */}
+      {showModal && (
+        <div className="modal-overlay">
+          <div className="modal">
+            <h3>Tem certeza que deseja excluir sua conta?</h3>
+            <p>Essa ação não pode ser desfeita.</p>
+            <div className="modal-actions">
+              <button
+                className="cancel-button"
+                onClick={() => setShowModal(false)}
+              >
+                Cancelar
+              </button>
+              <button className="confirm-delete-button" onClick={handleDeleteAccount}>
+                Sim, excluir
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      <Footer />
+    </>
   );
 }
 
