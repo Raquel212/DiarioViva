@@ -1,0 +1,98 @@
+.page-section-recadosPaciente {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 1.5rem;
+    background-color: #f0fdfa;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.section-header-recadosPaciente {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+}
+
+.recados-container-recadosPaciente {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.recado-item-recadosPaciente {
+    background-color: white;
+    border-left: 4px solid #14b8a6;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+}
+
+.recado-header-recadosPaciente {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.recado-header-recadosPaciente span {
+    font-size: 0.875rem;
+    color: #0d9488;
+    font-weight: 500;
+}
+
+.like-btn {
+    background: none;
+    border: none;
+    color: #0d9488;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    cursor: pointer;
+    font-size: 0.875rem;
+}
+
+.like-btn:hover {
+    color: #14b8a6;
+}
+
+.recado-body-recadosPaciente p {
+    margin: 0;
+    color: #374151;
+}
+
+.comentarios-recadosPaciente {
+    margin-top: 1rem;
+}
+
+.comentario-item {
+    background-color: #f9fafb;
+    padding: 0.5rem 0.75rem;
+    border-radius: 0.5rem;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+
+.comentario-form {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.comentario-form input {
+    flex: 1;
+    padding: 0.5rem;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.5rem;
+}
+
+.comentario-form button {
+    background-color: #14b8a6;
+    color: white;
+    border: none;
+    padding: 0.5rem 0.75rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+}
+
+.comentario-form button:hover {
+    background-color: #0d9488;
+}
