@@ -1,0 +1,212 @@
+.paciente-dashboard {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.dashboard-section {
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.section-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+    color: #14b8a6;
+}
+
+.section-header h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 0;
+    color: #1f2937;
+}
+
+.welcome-header p {
+    font-size: 1rem;
+    color: #4b5563;
+    margin: 0;
+}
+
+.summary-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+}
+
+.summary-card-content p {
+    color: #6b7280;
+    margin: 0 0 1rem 0;
+}
+
+.progress-bar-container {
+    background-color: #e5e7eb;
+    border-radius: 9999px;
+    height: 10px;
+    width: 100%;
+}
+
+.progress-bar {
+    background-color: #14b8a6;
+    height: 100%;
+    border-radius: 9999px;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.action-btn {
+    flex: 1;
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    text-align: center;
+    font-weight: 600;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.btn-primary {
+    background-color: #14b8a6;
+    color: white;
+    border: 1px solid;
+    cursor: pointer;
+}
+
+.btn-secondary {
+    background-color: #f0fdfa;
+    color: #0d9488;
+    border: 1px solid #14b8a6;
+}
+
+.action-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.metas-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    
+}
+
+.meta-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background-color: #f9fafb;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    border-left: 4px solid #e5e7eb;
+    transition: border-color 0.3s;
+    
+}
+
+.meta-item.completed {
+    border-left-color: #10b981;
+}
+
+.meta-item.completed span {
+    text-decoration: line-through;
+    color: #6b7280;
+}
+
+.meta-checkbox {
+    width: 20px;
+    height: 20px;
+    accent-color: #14b8a6;
+    cursor: pointer;
+}
+
+.meta-item span {
+    flex: 1;
+    font-size: 1rem;
+    color: #374151;
+}
+
+.diario-form textarea {
+    width: 100%;
+    min-height: 150px;
+    padding: 1rem;
+    border: 1px solid #d1d5db;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    box-sizing: border-box;
+    resize: vertical;
+    margin-bottom: 1rem;
+}
+
+.diario-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.mood-selector {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.mood-btn {
+    background: #f3f4f6;
+    border: 1px solid transparent;
+    border-radius: 50%;
+    padding: 0.5rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+.mood-btn:hover {
+    background: #e5e7eb;
+}
+.mood-btn.selected {
+    border-color: #14b8a6;
+    background-color: #f0fdfa;
+}
+
+.recados-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.recado-item {
+    background-color: #f0fdfa;
+    border-left: 4px solid #14b8a6;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+}
+
+.recado-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.recado-header span {
+    font-size: 0.875rem;
+    color: #0d9488;
+    font-weight: 500;
+}
+
+.recado-body p {
+    margin: 0;
+    color: #374151;
+}
+
+@media (min-width: 768px) {
+    .summary-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
