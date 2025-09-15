@@ -5,6 +5,9 @@ import Cadastro from './pages/Cadastro/Cadastro';
 import EditarPerfilPaciente from './pages/EditarPaciente/EditarPaciente';
 import EditarPerfilProfissional from './pages/EditarProfissional/EditarProfissional';
 import HomePaciente from './pages/Paciente/HomePaciente/HomePaciente';
+import DiarioPessoal from './pages/Paciente/DiarioPessoal/DiarioPessoal';
+import MinhasMetas from './pages/Paciente/MinhasMetas/MinhasMetas';
+import RecadosPaciente from './pages/Paciente/RecadosPaciente/RecadosPaciente';
 
 function AppRoutes() {
   return (
@@ -16,6 +19,9 @@ function AppRoutes() {
         <Route path="/editarPerfilPaciente" element={<EditarPerfilPaciente />} />
         <Route path="/editarPerfilProfissional" element={<EditarPerfilProfissional />} />
         <Route path="/homePaciente" element={<HomePaciente />} />
+        <Route path="/diarioPessoalPaciente" element={<DiarioPessoal />} />
+        <Route path="/minhasMetasPaciente" element={<MinhasMetas />} />
+        <Route path="/recadosPaciente" element={<RecadosPaciente/>} />
       </Routes>
     </BrowserRouter>
   );
