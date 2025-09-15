@@ -8,6 +8,7 @@ import HomePaciente from './pages/Paciente/HomePaciente/HomePaciente';
 import DiarioPessoal from './pages/Paciente/DiarioPessoal/DiarioPessoal';
 import MinhasMetas from './pages/Paciente/MinhasMetas/MinhasMetas';
 import RecadosPaciente from './pages/Paciente/RecadosPaciente/RecadosPaciente';
+import NotificacaoPaciente from './pages/Paciente/NotificacaoPaciente/NotificacaoPaciente';
 
 function AppRoutes() {
   return (
@@ -22,6 +23,7 @@ function AppRoutes() {
         <Route path="/diarioPessoalPaciente" element={<DiarioPessoal />} />
         <Route path="/minhasMetasPaciente" element={<MinhasMetas />} />
         <Route path="/recadosPaciente" element={<RecadosPaciente/>} />
+        <Route path="/notificacaoPaciente" element={<NotificacaoPaciente/>} />
       </Routes>
     </BrowserRouter>
   );
