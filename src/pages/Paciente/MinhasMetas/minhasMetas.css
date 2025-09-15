@@ -1,0 +1,90 @@
+.page-section-minhasMetasPaciente {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 1.5rem;
+    background-color: #f0fdfa;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.section-header-minhasMetasPaciente {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+}
+
+.metas-container-minhasMetasPaciente {
+    padding: 2rem;
+    border-radius: 0.75rem;
+}
+
+.metas-form-minhasMetasPaciente {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.metas-form-minhasMetasPaciente input {
+    flex: 1;
+    padding: 0.75rem;
+    border: 1px solid #f9fafb;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+}
+
+.add-meta-btn-minhasMetasPaciente {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    background-color: #14b8a6;
+    color: white;
+    border: none;
+    padding: .3125rem .5625rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.add-meta-btn-minhasMetasPaciente:hover {
+    background-color: #0d9488;
+}
+
+.metas-list-minhasMetasPaciente {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.meta-item-minhasMetasPaciente {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background-color: white;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    border-left: 4px solid #e5e7eb;
+    transition: border-color 0.3s;
+}
+
+.meta-item-minhasMetasPaciente.completed {
+    border-left-color: #10b981;
+}
+
+.meta-item-minhasMetasPaciente.completed label {
+    text-decoration: line-through;
+    color: #6b7280;
+}
+
+.meta-checkbox-minhasMetasPaciente {
+    width: 20px;
+    height: 20px;
+    accent-color: #14b8a6;
+    flex-shrink: 0;
+}
+
+.meta-item-minhasMetasPaciente label {
+    flex: 1;
+    font-size: 1rem;
+    color: #374151;
+}
