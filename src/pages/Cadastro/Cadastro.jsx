@@ -4,7 +4,6 @@ import { Eye, EyeOff } from 'lucide-react';
 import './cadastro.css';
 import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer';
-import api from '../../services/api'; 
 
 function Cadastro() {
   const navigate = useNavigate();
@@ -17,43 +16,45 @@ function Cadastro() {
   const [mensagemErro, setMensagemErro] = useState("");
   const [carregando, setCarregando] = useState(false);
 
-  const handleSubmit = async (evento) => {
+  const handleSubmit = (evento) => {
     evento.preventDefault();
     setCarregando(true);
     setMensagemSucesso("");
     setMensagemErro("");
 
-    const dadosDoUsuario = {
-      nome,
-      email,
-      senha,
-      tipoUsuario,
-    };
+    const dadosDoUsuario = { nome, email, senha, tipoUsuario, perfilCompleto: false };
 
-    try {
-      const resposta = await api.post("usuario", dadosDoUsuario);
-      console.log("Usuário cadastrado:", resposta.data);
-      setMensagemSucesso("Cadastro realizado com sucesso! Você já pode fazer o login.");
-      setNome("");
-      setEmail("");
-      setSenha("");
-      setTipoUsuario("PACIENTE");
-    } catch (erro) {
-      if (erro.response && erro.response.data?.message) {
-        setMensagemErro(erro.response.data.message);
-      } else if (
-        erro.response?.data &&
-        typeof erro.response.data === "string" &&
-        erro.response.data.includes("Email já cadastrado")
-      ) {
-        setMensagemErro("Este email já está cadastrado no sistema.");
-      } else {
-        setMensagemErro("Não foi possível conectar ao servidor. Tente novamente mais tarde.");
-      }
-      console.error("Erro no cadastro:", erro);
-    } finally {
+
+    const usuariosSalvos = JSON.parse(localStorage.getItem("usuarios")) || [];
+
+
+    const existeUsuario = usuariosSalvos.find((u) => u.email === email);
+    if (existeUsuario) {
+      setMensagemErro("Este email já está cadastrado no sistema.");
       setCarregando(false);
+      return;
     }
+
+
+    usuariosSalvos.push(dadosDoUsuario);
+    localStorage.setItem("usuarios", JSON.stringify(usuariosSalvos));
+
+    setMensagemSucesso("Cadastro realizado com sucesso! Redirecionando...");
+    setNome("");
+    setEmail("");
+    setSenha("");
+    setTipoUsuario("PACIENTE");
+
+
+    setTimeout(() => {
+      if (tipoUsuario === "PACIENTE") {
+        navigate("/login");
+      } else {
+        navigate("/login");
+      }
+    }, 1500);
+
+    setCarregando(false);
   };
 
   return (

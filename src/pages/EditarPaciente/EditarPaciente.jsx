@@ -1,7 +1,6 @@
 import { Save } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import api from "../../services/api";
 import "./editarPaciente.css";
 
 function EditarPerfilPaciente() {
@@ -14,27 +13,19 @@ function EditarPerfilPaciente() {
     comorbidades: "",
   });
 
-  const [isNewProfile, setIsNewProfile] = useState(false); 
   const [mensagem, setMensagem] = useState("");
   const [erro, setErro] = useState("");
 
   useEffect(() => {
-    async function carregarPerfil() {
-      try {
-        const resposta = await api.get("perfil/paciente");
-
-        if (resposta.data.peso === null) {
-          setIsNewProfile(true);
-        }
-
-        setPerfil(resposta.data);
-      } catch (err) {
-        console.error("Erro ao carregar perfil:", err);
-        setErro("Erro ao carregar dados do perfil.");
-      } 
+    try {
+      const dadosSalvos = localStorage.getItem("perfilPaciente");
+      if (dadosSalvos) {
+        setPerfil(JSON.parse(dadosSalvos));
+      }
+    } catch (err) {
+      console.error("Erro ao carregar perfil:", err);
+      setErro("Erro ao carregar dados do perfil.");
     }
-
-    carregarPerfil();
   }, []);
 
   const handleChange = (e) => {
@@ -42,27 +33,24 @@ function EditarPerfilPaciente() {
     setPerfil((prev) => ({ ...prev, [id]: value }));
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     setMensagem("");
     setErro("");
 
-    const dadosParaSalvar = {
-      ...perfil,
-      peso: perfil.peso ? parseFloat(perfil.peso) : null,
-      altura: perfil.altura ? parseFloat(perfil.altura) : null,
-    };
-
     try {
-      if (isNewProfile) {
-        await api.post("perfil/paciente", dadosParaSalvar);
-        setMensagem("Perfil criado com sucesso!");
-      } else {
-        await api.put("perfil/paciente", dadosParaSalvar);
-        setMensagem("Perfil atualizado com sucesso!");
-      }
+      const dadosParaSalvar = {
+        ...perfil,
+        peso: perfil.peso ? parseFloat(perfil.peso) : "",
+        altura: perfil.altura ? parseFloat(perfil.altura) : "",
+      };
 
-      navigate("/homePaciente");
+      localStorage.setItem("perfilPaciente", JSON.stringify(dadosParaSalvar));
+      setMensagem("Perfil salvo com sucesso!");
+
+      setTimeout(() => {
+        navigate("/homePaciente");
+      }, 1000);
     } catch (err) {
       console.error("Erro ao salvar perfil:", err);
       setErro("Não foi possível salvar as alterações no perfil.");

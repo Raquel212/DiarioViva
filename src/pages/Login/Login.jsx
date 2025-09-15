@@ -3,7 +3,6 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Footer from "../../components/Footer/Footer";
 import Header from "../../components/Header/Header";
-import api from "../../services/api";
 import "./Login.css";
 
 function Login() {
@@ -14,51 +13,54 @@ function Login() {
   const [carregando, setCarregando] = useState(false);
   const [mensagemErro, setMensagemErro] = useState("");
 
-  const handleSubmit = async (event) => {
+
+  const usuarios = [
+    {
+      email: "paciente@email.com",
+      senha: "123456",
+      tipoUsuario: "PACIENTE",
+      perfilCompleto: true,
+    },
+    {
+      email: "profissional@email.com",
+      senha: "123456",
+      tipoUsuario: "PROFISSIONAL",
+      perfilCompleto: false,
+    },
+  ];
+
+  const handleSubmit = (event) => {
     event.preventDefault();
     setCarregando(true);
     setMensagemErro("");
 
-    try {
-      const resposta = await api.post("login ", {
-        email,
-        senha,
-      });
+    setTimeout(() => {
+      const usuario = usuarios.find(
+        (u) => u.email === email && u.senha === senha
+      );
 
-      const { token, tipoUsuario, perfilCompleto } = resposta.data;
+      if (usuario) {
+        localStorage.setItem("tipoUsuario", usuario.tipoUsuario);
 
-      localStorage.setItem("token", token);
-      localStorage.setItem("tipoUsuario", tipoUsuario);
-
-      if (tipoUsuario === "PACIENTE") {
-        if (perfilCompleto) {
-          navigate("/homePaciente");
-        } else {
-          navigate("/editarPerfilPaciente");
-        }
-      } else if (tipoUsuario === "PROFISSIONAL") {
-        if (perfilCompleto) {
-          navigate("/homeProfissional");
-        } else {
-          navigate("/editarPerfilProfissional");
+        if (usuario.tipoUsuario === "PACIENTE") {
+          if (usuario.perfilCompleto) {
+            navigate("/homePaciente");
+          } else {
+            navigate("/editarPerfilPaciente");
+          }
+        } else if (usuario.tipoUsuario === "PROFISSIONAL") {
+          if (usuario.perfilCompleto) {
+            navigate("/homeProfissional");
+          } else {
+            navigate("/editarPerfilProfissional");
+          }
         }
       } else {
-        setMensagemErro("Tipo de usuário não reconhecido.");
-      }
-    } catch (erro) {
-      if (erro.response?.data?.message) {
-        setMensagemErro(erro.response.data.message);
-      } else if (erro.response?.status === 403) {
         setMensagemErro("Email ou senha inválidos. Tente novamente.");
-      } else {
-        setMensagemErro(
-          "Erro ao conectar. Verifique seus dados e tente novamente."
-        );
       }
-      console.error("Erro no login:", erro);
-    } finally {
+
       setCarregando(false);
-    }
+    }, 1000);
   };
 
   return (

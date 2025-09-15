@@ -1,7 +1,6 @@
 import { Save } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import api from "../../services/api";
 import "./editarProfissional.css";
 
 function EditarPerfilProfissional() {
@@ -16,63 +15,48 @@ function EditarPerfilProfissional() {
   const [mensagem, setMensagem] = useState("");
   const [erro, setErro] = useState("");
 
-
   const ufs = [
-    "AC",
-    "AL",
-    "AP",
-    "AM",
-    "BA",
-    "CE",
-    "DF",
-    "ES",
-    "GO",
-    "MA",
-    "MT",
-    "MS",
-    "MG",
-    "PA",
-    "PB",
-    "PR",
-    "PE",
-    "PI",
-    "RJ",
-    "RN",
-    "RS",
-    "RO",
-    "RR",
-    "SC",
-    "SP",
-    "SE",
-    "TO",
+    "AC","AL","AP","AM","BA","CE","DF","ES","GO","MA","MT",
+    "MS","MG","PA","PB","PR","PE","PI","RJ","RN","RS","RO",
+    "RR","SC","SP","SE","TO"
   ];
 
   useEffect(() => {
-    async function carregarPerfil() {
-      try {
-        const resposta = await api.get("perfil/profissional");
-        setPerfil(resposta.data);
-      } catch (err) {
-        console.error("Erro ao carregar perfil:", err);
-        setErro("Erro ao carregar dados do perfil.");
-      }
+
+    const usuarioLogado = JSON.parse(localStorage.getItem("usuarioLogado"));
+    if (!usuarioLogado || usuarioLogado.tipoUsuario !== "PROFISSIONAL") {
+      navigate("/login"); 
+      return;
     }
 
-    carregarPerfil();
-  }, []);
+    
+    const perfilSalvo = JSON.parse(localStorage.getItem("perfilProfissional"));
+    if (perfilSalvo) {
+      setPerfil(perfilSalvo);
+    }
+  }, [navigate]);
 
   const handleChange = (e) => {
     const { id, value } = e.target;
     setPerfil((prev) => ({ ...prev, [id]: value }));
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     setMensagem("");
     setErro("");
 
     try {
-      await api.put("perfil/profissional", perfil);
+    
+      localStorage.setItem("perfilProfissional", JSON.stringify(perfil));
+
+      
+      const usuarioLogado = JSON.parse(localStorage.getItem("usuarioLogado"));
+      if (usuarioLogado) {
+        usuarioLogado.perfilCompleto = true;
+        localStorage.setItem("usuarioLogado", JSON.stringify(usuarioLogado));
+      }
+
       setMensagem("Perfil salvo com sucesso!");
       navigate("/homeProfissional");
     } catch (err) {
