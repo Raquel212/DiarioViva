@@ -1,0 +1,258 @@
+/* --- Sidebar --- */
+.sidebarPaciente {
+    width: 230px;
+    background-color: #f3f4f6; /* cor do DiárioViva */
+    color: #0d9488; /* cor principal do DiárioViva */
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    transition: width 0.3s ease-in-out;
+    z-index: 100;
+    /* border: 2px solid red; */
+}
+
+.sidebarPaciente.collapsed {
+    width: 80px;
+    
+}
+.sidebarPaciente.collapsed .sidebarTitlePaciente {
+    display: none;
+}
+
+/* Header Sidebar */
+.sidebarHeaderPaciente {
+    padding: 27.5px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    border-bottom: 1px solid #e5e7eb;
+    flex-shrink: 0;
+    overflow: hidden;
+}
+.sidebarPaciente.collapsed .sidebarHeaderPaciente {
+    padding: 27.8px;
+}
+
+/* .sidebarPaciente.collapsed .logoHomePaciente{
+    border: 2px solid green;
+    
+    
+} */
+
+.sidebarLogoPaciente {
+    height: 2.5rem;
+    width: 2.5rem;
+    flex-shrink: 0;
+}
+
+.sidebarTitlePaciente {
+    font-size: 25px;
+    font-weight: 600;
+    color: #0d9488;
+    white-space: nowrap;
+    transition: font-size 0.2s ease-in-out;
+    /* border: 2px solid blue; */
+}
+
+.sidebarPaciente.collapsed .sidebarTitlePaciente {
+    font-size: 1.25rem;
+
+}
+
+/* Navegação */
+.sidebarNavPaciente {
+    flex-grow: 1;
+    padding: 1rem 0;
+    overflow-y: auto;
+}
+
+.navListPaciente {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.navItemPaciente a {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    color: #0d9488;
+    text-decoration: none;
+    font-size: 20px;
+    transition: background-color 0.2s, color 0.2s;
+    margin-bottom: 10px;
+    /* border-radius: 0.5rem; */
+}
+
+.navItemPaciente a:hover {
+    background-color: #14b8a6;
+    color: white;
+}
+
+.sidebarPaciente.collapsed .navItemPaciente a {
+    font-size: 1rem;
+    justify-content: center;
+}
+
+/* Ícones */
+.navIconPaciente {
+    width: 25px;
+    height: 25px;
+    margin-right: 0.5rem;
+    transition: margin-right 0.3s, width 0.2s, height 0.2s;
+}
+
+.sidebarPaciente.collapsed .navIconPaciente {
+    width: 25px;
+    height: 25px;
+    margin-right: 0;
+}
+
+/* Labels */
+.navLabel {
+    display: inline-block;
+    transition: opacity 0.2s;
+}
+
+.sidebarPaciente.collapsed .navLabel {
+    display: none;
+}
+
+/* Footer / Botão de colapsar */
+.sidebarFooterPaciente {
+    padding: 23px;
+    border-top: 1px solid #e5e7eb;
+    margin-top: auto;
+    display: flex;
+    justify-content: center;
+    /* border: 2px solid red; */
+}
+
+.sidebarPaciente.collapsed .sidebarFooterPaciente {
+    padding: 24.1px;
+}
+
+.sidebarFooterPaciente:hover {
+    background-color: #14b8a6;
+    color: white;
+}
+
+.toggleButtonPaciente {
+    background-color: transparent;
+    border: none;
+    color: #0d9488;
+    padding: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s;
+    font-size: 1.25rem;
+}
+
+.toggleButtonPaciente svg {
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+.sidebarPaciente.collapsed .toggleButtonPaciente {
+    font-size: 1rem;
+    padding: 9px;
+}
+
+/* Conteúdo principal */
+.headerPaciente {
+    background-color: #f3f4f6;
+    padding: 0 2rem;
+    height: 89px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex-shrink: 0;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.userMenuPaciente {
+    position: relative;
+}
+
+.userButtonPaciente {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.userAvatarPaciente {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 9999px;
+    object-fit: cover;
+}
+
+.userNamePaciente {
+    font-weight: 600;
+    color: #0d9488;
+    font-size: 16px;
+}
+
+.arrowIcon {
+    width: 30px;
+    height: 30px;
+    color: #0d9488;
+    transition: transform 0.3s ease;
+}
+
+.rotate {
+    transform: rotate(180deg);
+}
+
+.dropdownMenuPaciente {
+    position: absolute;
+    right: 0;
+    top: calc(100% + 0.5rem);
+    background-color: white;
+    border-radius: 0.5rem;
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    width: 200px;
+    z-index: 50;
+    overflow: hidden;
+    border: 1px solid #cce7e2;
+}
+
+.dropdownListPaciente {
+    list-style: none;
+    padding: 0.5rem 0;
+    margin: 0;
+}
+
+.dropdownItemPaciente a {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.5rem 1rem;
+    color: #0d9488;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.dropdownItemPaciente a:hover {
+    background-color: #14b8a6;
+    color: white;
+}
+
+.dropdownDividerPaciente {
+    height: 1px;
+    background-color: #cce7e2;
+    margin: 0.5rem 0;
+}
+
+.contentAreaPaciente {
+    flex-grow: 1;
+    padding: 2rem;
+}
