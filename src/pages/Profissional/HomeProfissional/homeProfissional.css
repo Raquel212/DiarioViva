@@ -1,0 +1,165 @@
+.profissional-dashboard {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.dashboard-section {
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.section-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+    color: #14b8a6;
+}
+
+.section-header h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 0;
+    color: #1f2937;
+}
+
+.summary-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+}
+
+.summary-card {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background-color: #f9fafb;
+    padding: 1rem;
+    border-radius: 0.5rem;
+}
+
+.summary-card-info h3 {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #1f2937;
+}
+
+.summary-card-info p {
+    margin: 0;
+    color: #6b7280;
+    font-size: 0.9rem;
+}
+
+.list-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem; 
+}
+
+.list-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.75rem 1rem; 
+    border-radius: 0.5rem;
+    background-color: #f9fafb;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.list-item:hover {
+    background-color: #f0fdfa;
+}
+
+.list-item-avatar {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #14b8a6;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+.list-item-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.list-item-info p {
+    margin: 0;
+    font-weight: 600;
+    color: #1f2937;
+    font-size: 1rem;
+}
+
+.list-item-info span {
+    font-size: 0.875rem;
+    color: #6b7280;
+    margin-top: 0.2rem;
+}
+
+.list-item-recado {
+    display: flex;
+    justify-content: space-between; 
+    align-items: flex-start; 
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+    background-color: #f9fafb;
+    transition: background-color 0.2s;
+}
+
+.list-item-recado:hover {
+    background-color: #f0fdfa;
+    cursor: pointer;
+}
+
+.list-item-recado .list-item-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.list-item-recado .list-item-info p {
+    margin: 0;
+    font-weight: 600;
+    color: #1f2937;
+    font-size: 0.95rem;
+}
+
+.list-item-recado .list-item-info span {
+    font-size: 0.875rem;
+    color: #6b7280;
+}
+
+.view-all-link {
+    display: inline-block;
+    margin-top: 0.5rem;
+    font-size: 0.875rem;
+    color: #14b8a6;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.view-all-link:hover {
+    text-decoration: underline;
+}
+
+@media (min-width: 768px) {
+    .summary-grid {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
