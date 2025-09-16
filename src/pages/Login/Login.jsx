@@ -25,7 +25,7 @@ function Login() {
       email: "profissional@email.com",
       senha: "123456",
       tipoUsuario: "PROFISSIONAL",
-      perfilCompleto: false,
+      perfilCompleto: true,
     },
   ];
 
