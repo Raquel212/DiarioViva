@@ -10,6 +10,7 @@ import MinhasMetas from './pages/Paciente/MinhasMetas/MinhasMetas';
 import RecadosPaciente from './pages/Paciente/RecadosPaciente/RecadosPaciente';
 import NotificacaoPaciente from './pages/Paciente/NotificacaoPaciente/NotificacaoPaciente';
 import HomeProfissional from './pages/Profissional/HomeProfissional/HomeProfissional';
+import MeusPacientes from './pages/Profissional/MeusPacientes/MeusPacientes';
 
 function AppRoutes() {
   return (
@@ -26,6 +27,7 @@ function AppRoutes() {
         <Route path="/recadosPaciente" element={<RecadosPaciente/>} />
         <Route path="/notificacaoPaciente" element={<NotificacaoPaciente/>} />
         <Route path="/homeProfissional" element={<HomeProfissional />} />
+        <Route path="/meusPacienteProfissional" element={<MeusPacientes />} />
       </Routes>
     </BrowserRouter>
   );
