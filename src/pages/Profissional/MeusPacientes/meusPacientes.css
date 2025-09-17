@@ -1,0 +1,247 @@
+.container-MeusPacientes {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 1.5rem;
+  background-color: #fff;
+  border-radius: 0.75rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+.toolbar-MeusPacientes {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.section-header-MeusPacientes {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+    color: #14b8a6;
+}
+
+.search-container-MeusPacientes {
+    position: relative;
+    flex-grow: 1;
+    min-width: 250px;
+}
+
+.search-input-MeusPacientes {
+    width: 100%;
+    padding: 0.75rem 1rem 0.75rem 2.5rem;
+    border: 1px solid #d1d5db;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+
+.search-icon-MeusPacientes {
+    position: absolute;
+    left: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #6b7280;
+}
+
+.table-wrapper-MeusPacientes {
+    overflow-x: auto;
+}
+
+.pacientes-table-MeusPacientes {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff;
+}
+
+.pacientes-table-MeusPacientes th, .pacientes-table-MeusPacientes td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.pacientes-table-MeusPacientes th {
+    font-size: 0.875rem;
+    color: #6b7280;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.paciente-info-MeusPacientes {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.paciente-avatar-MeusPacientes {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.paciente-name-MeusPacientes {
+    font-weight: 500;
+    color: #1f2937;
+}
+
+.status-badge {
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    display: inline-block;
+}
+
+.status-badge.active {
+    background-color: #d1fae5;
+    color: #065f46;
+}
+
+.status-badge.inactive {
+    background-color: #fee2e2;
+    color: #991b1b;
+}
+
+.action-menu-btn-MeusPacientes {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.25rem;
+    color: #6b7280;
+}
+
+.action-btn-MeusPacientes {
+    background-color: #14b8a6;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    width: 200px;
+}
+
+.action-btn-MeusPacientes:hover {
+    background-color: #0d9488;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+.action-btn-MeusPacientes span {
+    position: relative;
+    top: -5px; 
+    margin-left: 5px;
+}
+
+.progress-wrapper {
+  display: flex;
+  align-items: center;
+  margin-left: 30px;
+  gap: 0.5rem;
+}
+
+.progress-text {
+    font-weight: 500;
+    font-size: 0.875rem;
+    color: #374151; 
+}
+
+/* ===== Modal ===== */
+.modal-overlay-MeusPacientes {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.modal-content-MeusPacientes {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 10px;
+  max-width: 500px;
+  width: 100%;
+  position: relative;
+  animation: fadeIn 0.3s ease;
+}
+
+.modal-close-MeusPacientes {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.form-add-paciente-MeusPacientes {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.form-add-paciente-MeusPacientes input {
+  padding: 0.75rem;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+}
+
+.form-add-paciente-MeusPacientes button {
+  background: #14b8a6;
+  color: white;
+  border: none;
+  padding: 0.75rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.form-add-paciente-MeusPacientes button:hover {
+  background: #0d9488;
+}
+
+.paciente-actions-MeusPacientes {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0 0;
+}
+
+.paciente-actions-MeusPacientes li {
+  margin-bottom: 0.5rem;
+}
+
+.paciente-actions-MeusPacientes button {
+  width: 100%;
+  padding: 0.75rem;
+  border: none;
+  background: #f3f4f6;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s;
+
+}
+
+.paciente-actions-MeusPacientes a{
+    text-decoration: none;
+    color: black;
+}
+
+.paciente-actions-MeusPacientes button:hover {
+  background: #e5e7eb;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
