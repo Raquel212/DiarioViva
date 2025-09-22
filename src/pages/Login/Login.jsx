@@ -41,7 +41,6 @@ function Login() {
       if (usuario) {
         localStorage.setItem("tipoUsuario", usuario.tipoUsuario);
 
-        // Redireciona direto para a home do tipo de usuário
         if (usuario.tipoUsuario === "PACIENTE") {
           navigate("/homePaciente");
         } else if (usuario.tipoUsuario === "PROFISSIONAL") {
