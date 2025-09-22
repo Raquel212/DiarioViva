@@ -2,6 +2,8 @@ import './home.css';
 import { CheckCircle2, BookHeart, Users, Quote, Link } from 'lucide-react';
 import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer';
+import ImgHome from "../../assets/Img_Home.png";
+
 
 function Home() {
   return (
@@ -22,7 +24,7 @@ function Home() {
                 O DiárioViva nasceu da necessidade de aproximar pacientes e profissionais de saúde. Acreditamos que o acompanhamento contínuo é a chave para um tratamento eficaz e uma vida mais saudável. Nossa plataforma funciona como um diário compartilhado, onde a comunicação flui de forma simples, organizada e inteligente, fortalecendo a confiança e o engajamento.
               </p>
             </div>
-            <img src="https://placehold.co/600x400/a7f3d0/1f2937?text=Cuidado+Conectado" alt="Ilustração de uma pessoa conversando com um profissional de saúde online" className="sobre-image" />
+            <img src={ImgHome} alt="Ilustração" className="sobre-image" />
           </div>
         </section>
         
