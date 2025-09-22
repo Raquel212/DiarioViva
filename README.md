@@ -46,8 +46,8 @@ O **DiarioViva** é como um caderno inteligente e colaborativo:
 - **Front-End**: React.js, Vite
 - **Linguagem**: JavaScript
 - **Hospedagem**: Vercel
-- **Controle de Versão:**: GitHub  
-- **Outras Ferramentas:**: Visual Studio Code  
+- **Controle de Versão**: GitHub  
+- **Outras Ferramentas**: Visual Studio Code  
 
 ---
 
