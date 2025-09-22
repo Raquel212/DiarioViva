@@ -15,7 +15,7 @@ O **DiarioViva** é como um caderno inteligente e colaborativo:
 
 ## 👥 Quem Usa?  
 - **Paciente**: pessoas em tratamento ou buscando hábitos mais saudáveis.  
-- **Profissional**: especialistas como médicos, nutricionistas ou terapeutas.  
+- **Profissional**: especialistas como médicos, enfermeiros ou fisioterapeuta.  
 
 ---
 
@@ -43,9 +43,11 @@ O **DiarioViva** é como um caderno inteligente e colaborativo:
 ---
 
 ## 🛠️ Tecnologias Utilizadas  
-- **React** + **Vite**  
-- **CSS**  
-- Dados locais (sem backend)  
+- **Front-End**: React.js, Vite
+- **Linguagem**: JavaScript
+- **Hospedagem**: 
+- **Controle de Versão:**: GitHub  
+- **Outras Ferramentas:**: Visual Studio Code  
 
 ---
 
