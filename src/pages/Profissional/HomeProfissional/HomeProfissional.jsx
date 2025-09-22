@@ -75,7 +75,7 @@ function HomeProfissional() {
                             </div>
                         ))}
                     </div>
-                    <a href="#" className="view-all-link">Ver todos os pacientes</a>
+                    <a href="/meusPacienteProfissional" className="view-all-link">Ver todos os pacientes</a>
                 </section>
 
                 {/* SEÇÃO 3: ÚLTIMOS RECADOS */}
@@ -95,7 +95,7 @@ function HomeProfissional() {
                             </div>
                         ))}
                     </div>
-                    <a href="#" className="view-all-link">Ver todos os recados</a>
+                    <a href="/recadosProfissional" className="view-all-link">Ver todos os recados</a>
                 </section>
             </div>
 

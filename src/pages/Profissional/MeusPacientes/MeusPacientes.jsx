@@ -67,6 +67,14 @@ function MeusPacientes() {
     setShowAddModal(false);
     };
 
+    const handleRemovePaciente = (id) => {
+      const confirmacao = window.confirm("Tem certeza que deseja remover este paciente?");
+        if (confirmacao) {
+          setPacientes(pacientes.filter(p => p.id !== id));
+          setSelectedPaciente(null); 
+        }
+    };
+
 
   return (
     <>
@@ -183,8 +191,8 @@ function MeusPacientes() {
           <h3>Ações para {selectedPaciente.nome}</h3>
           <ul className="paciente-actions-MeusPacientes">
             <li><button><a href="/verPerfil">Ver Perfil</a></button></li>
-            <li><button>Enviar Mensagem</button></li>
-            <li><button>Remover Paciente</button></li>
+            <li><button><a href="/recadosProfissional">Enviar Mensagem</a></button></li>
+            <li><button onClick={() => handleRemovePaciente(selectedPaciente.id)}>Remover Paciente</button></li>
           </ul>
         </Modal>
       )}
