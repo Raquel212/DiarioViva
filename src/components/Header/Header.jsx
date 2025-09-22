@@ -1,4 +1,4 @@
-import './Header.css';
+import './header.css';
 import  { useState } from 'react';
 import { HeartPulse, Menu } from 'lucide-react';
 import { Link } from 'react-router-dom';
