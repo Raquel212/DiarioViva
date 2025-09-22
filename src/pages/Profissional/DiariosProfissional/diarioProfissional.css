@@ -1,0 +1,102 @@
+.page-section_diariosPg {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 1.5rem;
+  background-color: #fff;
+  border-radius: 0.75rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+.section-header_diariosPg {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+    color: #14b8a6;
+}
+
+.paciente-accordion_diariosPg {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.paciente-item_diariosPg {
+    background-color: #fff;
+    border-radius: 0.75rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+}
+
+.paciente-header_diariosPg {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.5rem;
+    cursor: pointer;
+}
+
+.paciente-info_diariosPg {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.paciente-avatar_diariosPg {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.paciente-name_diariosPg {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: #1f2937;
+}
+
+.paciente-toggle-icon_diariosPg {
+    transition: transform 0.3s;
+}
+
+.paciente-toggle-icon_diariosPg.open {
+    transform: rotate(180deg);
+}
+
+.paciente-diarios-content_diariosPg {
+    padding: 0 1.5rem 1.5rem 1.5rem;
+    border-top: 1px solid #e5e7eb;
+}
+
+.diarios-list_diariosPg {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.diario-entry_diariosPg {
+    background-color: #f9fafb;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    border-left: 4px solid #9ca3af;
+}
+
+.diario-entry-header_diariosPg {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.75rem;
+}
+
+.diario-entry-header_diariosPg span {
+    font-weight: 500;
+    color: #4b5563;
+    font-size: 0.9rem;
+}
+
+.diario-entry-body_diariosPg {
+    color: #374151;
+    white-space: pre-wrap;
+}
