@@ -9,7 +9,7 @@ const iconProps = {
 
 function Sidebar({ isOpen, toggleSidebar }) {
     return (
-        <aside className={`sidebarPaciente ${isOpen ? '' : 'collapsed'}`}>
+        <aside className={`sidebarPaciente ${isOpen ? 'active' : ''} ${isOpen ? '' : 'collapsed'}`}>
             <div className="sidebarHeaderPaciente">
                 <HeartPulse className="logoHomePaciente" size={32} color="#0d9488" />
                 <h1 className="sidebarTitlePaciente">DiarioViva</h1>

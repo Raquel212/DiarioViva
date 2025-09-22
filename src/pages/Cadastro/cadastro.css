@@ -84,3 +84,12 @@
     width: 50%;
   }
 }
+
+@media (max-width: 468px) {
+  .login-branding {
+    display: none;
+  }
+  .login-form-wrapper {
+    width: 100%;
+  }
+}

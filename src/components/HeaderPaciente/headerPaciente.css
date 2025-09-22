@@ -1,8 +1,8 @@
 /* --- Sidebar --- */
 .sidebarPaciente {
     width: 230px;
-    background-color: #f3f4f6; /* cor do DiárioViva */
-    color: #0d9488; /* cor principal do DiárioViva */
+    background-color: #f3f4f6;
+    color: #0d9488; 
     height: 100vh;
     position: fixed;
     top: 0;
@@ -11,7 +11,6 @@
     flex-direction: column;
     transition: width 0.3s ease-in-out;
     z-index: 100;
-    /* border: 2px solid red; */
 }
 
 .sidebarPaciente.collapsed {
@@ -36,12 +35,6 @@
     padding: 27.8px;
 }
 
-/* .sidebarPaciente.collapsed .logoHomePaciente{
-    border: 2px solid green;
-    
-    
-} */
-
 .sidebarLogoPaciente {
     height: 2.5rem;
     width: 2.5rem;
@@ -53,8 +46,6 @@
     font-weight: 600;
     color: #0d9488;
     white-space: nowrap;
-    transition: font-size 0.2s ease-in-out;
-    /* border: 2px solid blue; */
 }
 
 .sidebarPaciente.collapsed .sidebarTitlePaciente {
@@ -84,7 +75,6 @@
     font-size: 20px;
     transition: background-color 0.2s, color 0.2s;
     margin-bottom: 10px;
-    /* border-radius: 0.5rem; */
 }
 
 .navItemPaciente a:hover {
@@ -128,7 +118,6 @@
     margin-top: auto;
     display: flex;
     justify-content: center;
-    /* border: 2px solid red; */
 }
 
 .sidebarPaciente.collapsed .sidebarFooterPaciente {
@@ -144,13 +133,16 @@
     background-color: transparent;
     border: none;
     color: #0d9488;
-    padding: 8px;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
     transition: transform 0.3s;
     font-size: 1.25rem;
+    width: 100%;        
+    min-width: 40px;      
+    height: 41px;       
+    border-radius: 0.5rem; 
 }
 
 .toggleButtonPaciente svg {
@@ -159,8 +151,14 @@
 }
 
 .sidebarPaciente.collapsed .toggleButtonPaciente {
-    font-size: 1rem;
-    padding: 9px;
+    font-size: 1rem;        
+    width: 40px;          
+    height: 40px;          
+    min-width: 0;           
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
 }
 
 /* Conteúdo principal */
@@ -255,4 +253,47 @@
 .contentAreaPaciente {
     flex-grow: 1;
     padding: 2rem;
+}
+
+/* ----- Responsividade ----- */
+
+@media (max-width: 1024px) {
+  .sidebarPaciente {
+    width: 80px !important; 
+  }
+
+  .sidebarTitlePaciente,
+  .navLabel {
+    display: none !important; 
+  }
+
+  .sidebarFooterPaciente {
+    display: none !important; /
+  }
+
+  .mainContentPaciente {
+    margin-left: 80px; 
+  }
+}
+
+@media (max-width: 768px) {
+  .sidebarPaciente {
+    width: 80px !important; 
+
+  }
+
+  .sidebarPaciente .sidebarTitlePaciente,
+  .sidebarPaciente .navLabel,
+  .sidebarFooterPaciente {
+    display: none !important; 
+    
+  }
+
+  .sidebarPaciente.collapsed {
+    width: 80px !important; 
+  }
+
+  .mainContentPaciente {
+    margin-left: 80px;
+  }
 }
