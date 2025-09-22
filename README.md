@@ -45,7 +45,7 @@ O **DiarioViva** é como um caderno inteligente e colaborativo:
 ## 🛠️ Tecnologias Utilizadas  
 - **Front-End**: React.js, Vite
 - **Linguagem**: JavaScript
-- **Hospedagem**: 
+- **Hospedagem**: Vercel
 - **Controle de Versão:**: GitHub  
 - **Outras Ferramentas:**: Visual Studio Code  
 
