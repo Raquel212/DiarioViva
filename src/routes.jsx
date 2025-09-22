@@ -11,6 +11,12 @@ import RecadosPaciente from './pages/Paciente/RecadosPaciente/RecadosPaciente';
 import NotificacaoPaciente from './pages/Paciente/NotificacaoPaciente/NotificacaoPaciente';
 import HomeProfissional from './pages/Profissional/HomeProfissional/HomeProfissional';
 import MeusPacientes from './pages/Profissional/MeusPacientes/MeusPacientes';
+import VerPerfil from './pages/Profissional/VerPerfil/VerPerfil';
+import MetasProfissional from './pages/Profissional/MetasProfissional/MetasProfissional';
+import DiariosProfissional from './pages/Profissional/DiariosProfissional/DiarioProfissional';
+import RecadosProfissional from './pages/Profissional/RecadosProfissional/RecadosProfissional';
+import HistoricoProfissional from './pages/Profissional/HistoricoProfissional/HistoricoProfissional';
+import NotificacaoProfissional from './pages/Profissional/NotifcacaoProfissional/NotificacaoProfissional';
 
 function AppRoutes() {
   return (
@@ -28,6 +34,12 @@ function AppRoutes() {
         <Route path="/notificacaoPaciente" element={<NotificacaoPaciente/>} />
         <Route path="/homeProfissional" element={<HomeProfissional />} />
         <Route path="/meusPacienteProfissional" element={<MeusPacientes />} />
+        <Route path="/verPerfil" element={<VerPerfil />} />
+        <Route path="/metasProfissional" element={<MetasProfissional />} />
+        <Route path="/diariosProfissional" element={<DiariosProfissional />} />
+        <Route path="/recadosProfissional" element={<RecadosProfissional />} />
+        <Route path="/historicoProfissional" element={<HistoricoProfissional />} />
+        <Route path="/notificacaoProfissional" element={<NotificacaoProfissional />} />
       </Routes>
     </BrowserRouter>
   );
