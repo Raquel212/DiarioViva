@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Footer from "../../components/Footer/Footer";
 import Header from "../../components/Header/Header";
-import "./Login.css";
+import "./login.css";
 
 function Login() {
   const navigate = useNavigate();

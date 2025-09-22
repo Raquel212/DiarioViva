@@ -167,7 +167,7 @@
   margin-bottom: 4px;
 }
 
-/* Media query para telas menores */
+
 @media (min-width: 768px) {
   .login-branding {
     display: flex;
