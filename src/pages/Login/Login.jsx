@@ -13,7 +13,6 @@ function Login() {
   const [carregando, setCarregando] = useState(false);
   const [mensagemErro, setMensagemErro] = useState("");
 
-
   const usuarios = [
     {
       email: "paciente@email.com",
@@ -42,18 +41,11 @@ function Login() {
       if (usuario) {
         localStorage.setItem("tipoUsuario", usuario.tipoUsuario);
 
+        // Redireciona direto para a home do tipo de usuário
         if (usuario.tipoUsuario === "PACIENTE") {
-          if (usuario.perfilCompleto) {
-            navigate("/homePaciente");
-          } else {
-            navigate("/editarPerfilPaciente");
-          }
+          navigate("/homePaciente");
         } else if (usuario.tipoUsuario === "PROFISSIONAL") {
-          if (usuario.perfilCompleto) {
-            navigate("/homeProfissional");
-          } else {
-            navigate("/editarPerfilProfissional");
-          }
+          navigate("/homeProfissional");
         }
       } else {
         setMensagemErro("Email ou senha inválidos. Tente novamente.");
