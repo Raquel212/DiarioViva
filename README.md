@@ -1,12 +1,75 @@
-# React + Vite
+# DiarioViva  
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+📘 **DiarioViva** é um site desenvolvido para aproximar pacientes e profissionais de saúde, funcionando como um diário digital compartilhado. Ele combina **tarefas diárias, anotações pessoais e recados do profissional**, criando um cuidado mais próximo e personalizado.  
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🌟 Ideia Principal  
+O **DiarioViva** é como um caderno inteligente e colaborativo:  
+- O paciente registra suas atividades, reflexões e progresso.  
+- O profissional acompanha de perto, define metas e deixa orientações.  
 
-## Expanding the ESLint configuration
+✨ Objetivo: **Motivar o paciente** e oferecer ao profissional um cuidado mais humano, contínuo e organizado.  
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 👥 Quem Usa?  
+- **Paciente**: pessoas em tratamento ou buscando hábitos mais saudáveis.  
+- **Profissional**: especialistas como médicos, nutricionistas ou terapeutas.  
+
+---
+
+## 📝 Funcionalidades  
+
+### Para o Paciente  
+- ✅ Visualizar metas diárias definidas pelo profissional.  
+- ✅ Marcar tarefas concluídas.  
+- ✅ Escrever livremente em um diário digital.  
+- ✅ Receber recados e feedback do profissional.  
+
+### Para o Profissional  
+- 👩‍⚕️ Acessar a lista de pacientes.  
+- 👩‍⚕️ Criar e gerenciar metas diárias para cada paciente.  
+- 👩‍⚕️ Ler o diário do paciente.  
+- 👩‍⚕️ Deixar recados de apoio ou orientação.  
+
+---
+
+## 📖 Exemplo Prático  
+- **Dr. Carlos (profissional)** cria metas para Maria (paciente).  
+- **Maria (paciente)** marca as tarefas como concluídas e escreve no diário.  
+- **Dr. Carlos** acompanha o progresso e envia feedback motivacional.  
+
+---
+
+## 🛠️ Tecnologias Utilizadas  
+- **React** + **Vite**  
+- **CSS**  
+- Dados locais (sem backend)  
+
+---
+
+## 🔑 Acesso de Teste  
+
+- **Login Paciente**  
+  - 📧 Email: `paciente@email.com`  
+  - 🔑 Senha: `123456`  
+
+- **Login Profissional**  
+  - 📧 Email: `profissional@email.com`  
+  - 🔑 Senha: `123456`  
+
+---
+
+## 🚀 Como Rodar o Projeto  
+
+```bash
+# Clone o repositório
+git clone https://github.com/seu-usuario/diarioviva.git
+cd diarioviva
+
+# Instale as dependências
+npm install
+
+# Rode o servidor local
+npm run dev
