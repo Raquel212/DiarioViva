@@ -14,6 +14,7 @@ import {
   getAIErrorMessage,
   getAIConfig,
   isAIConfigured,
+  isAIDemo,
   saveAIConfig,
 } from "../../services/ai";
 
@@ -88,6 +89,7 @@ function AISettings({ open, onClose }) {
   };
 
   const configured = isAIConfigured();
+  const demo = isAIDemo();
 
   return (
     <div className="ai-settings-overlay" onClick={onClose}>
@@ -102,7 +104,9 @@ function AISettings({ open, onClose }) {
         <div
           className={`ai-config-status ${configured ? "ok" : "missing"}`}
         >
-          {configured
+          {demo
+            ? "⚡ Modo demonstração ativo — o assistente responde com mensagens simuladas."
+            : configured
             ? "✓ IA configurada — pronta para usar."
             : "Sem chave de API — o assistente ainda não consegue responder."}
         </div>
@@ -232,7 +236,8 @@ export default function AIAssistant({ role = "paciente" }) {
               <div className="ai-panel-titles">
                 <strong>{cfg.label}</strong>
                 <span className="ai-panel-status">
-                  <i className="ai-dot" /> IA on-line
+                  <i className="ai-dot" />
+                  {isAIDemo() ? "Modo demonstração" : "IA on-line"}
                 </span>
               </div>
               <button
