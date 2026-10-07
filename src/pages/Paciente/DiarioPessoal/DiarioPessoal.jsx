@@ -1,12 +1,19 @@
 import { useState } from 'react';
-import { BookOpen, Smile, Meh, Frown } from 'lucide-react';
+import { BookOpen, Smile, Meh, Frown, Sparkles, X } from 'lucide-react';
 import './diarioPessoal.css';
 import HeaderPaciente from '../../../components/HeaderPaciente/HeaderPaciente';
-import Footer from '../../../components/Footer/Footer';
+import {
+  chatCompletion,
+  getAIErrorMessage,
+  isAIConfigured,
+} from '../../../services/ai';
 
 function DiarioPessoal() {
     const [mood, setMood] = useState(null);
     const [texto, setTexto] = useState('');
+    const [aiSugestao, setAiSugestao] = useState('');
+    const [aiLoading, setAiLoading] = useState(false);
+    const [aiError, setAiError] = useState('');
     const [historico, setHistorico] = useState([
         { data: '12 de Setembro de 2025', texto: 'Consegui fazer a caminhada, mas me senti muito cansada no começo. O café da manhã com a fruta foi ótimo.', mood: 'feliz'},
         { data: '11 de Setembro de 2025', texto: 'Achei difícil evitar o doce depois do almoço. Acabei comendo um chocolate pequeno.', mood: 'triste'},
@@ -32,9 +39,36 @@ function DiarioPessoal() {
         setMood(null);
     }
 
+    const gerarSugestaoComIA = async () => {
+        if (!isAIConfigured()) {
+            setAiError('Configure a IA no assistente flutuante (ícone de brilho ✨ no canto da tela) para usar este recurso.');
+            return;
+        }
+        setAiLoading(true);
+        setAiError('');
+        try {
+            const humor = mood ? { feliz: 'feliz', neutro: 'neutro', triste: 'triste' }[mood] : 'não informado';
+            const resposta = await chatCompletion({
+                system: `Você é um incentivador gentil e acolhedor do DiárioViva.
+Escreva 2 a 4 frases curtas, em português do Brasil, para ajudar o paciente a continuar sua reflexão no diário.
+Se um humor foi informado, leve-o em conta (ex.: se o humor é triste, acolha com empatia e sugira algo positivo e realista).
+Não use listas nem emojis demais. Responda apenas com a sugestão.`,
+                messages: [
+                    { role: 'user', content: `Texto atual da anotação: "${texto || '(vazio)'}". Humor de hoje: ${humor}.` },
+                ],
+                maxTokens: 220,
+            });
+            setAiSugestao(resposta);
+        } catch (err) {
+            setAiError(getAIErrorMessage(err.message || 'AI_SERVER'));
+        } finally {
+            setAiLoading(false);
+        }
+    };
+
     return (
         <>
-            <HeaderPaciente />
+            <HeaderPaciente>
             <main className="diario-container-diarioPessoal">
                 <header className="diario-header-diarioPessoal">
                     <BookOpen className="diario-icon-diarioPessoal" size={28} color="#0d9488" />
@@ -52,6 +86,43 @@ function DiarioPessoal() {
                             value={texto}
                             onChange={(e) => setTexto(e.target.value)}
                         ></textarea>
+
+                        <button
+                            type="button"
+                            className="ai-suggestion-btn"
+                            onClick={gerarSugestaoComIA}
+                            disabled={aiLoading}
+                        >
+                            <Sparkles size={16} />
+                            {aiLoading ? 'Gerando...' : 'Sugestão com IA'}
+                        </button>
+
+                        {aiError && <p className="ai-suggestion-error">{aiError}</p>}
+
+                        {aiSugestao && (
+                            <div className="ai-suggestion-box">
+                                <div className="ai-suggestion-header">
+                                    <span><Sparkles size={14} /> Sugestão da IA</span>
+                                    <button
+                                        type="button"
+                                        className="ai-suggestion-close"
+                                        onClick={() => setAiSugestao('')}
+                                        aria-label="Descartar sugestão"
+                                    >
+                                        <X size={16} />
+                                    </button>
+                                </div>
+                                <p>{aiSugestao}</p>
+                                <button
+                                    type="button"
+                                    className="ai-suggestion-use"
+                                    onClick={() => setTexto((prev) => (prev ? prev + '\n\n' + aiSugestao : aiSugestao))}
+                                >
+                                    Usar no meu diário
+                                </button>
+                            </div>
+                        )}
+
                         <div className="diario-actions-diarioPessoal">
                             <div className="mood-selector-diarioPessoal">
                                 <button type="button" className={`mood-btn-diarioPessoal ${mood === 'feliz' ? 'selected' : ''}`} onClick={() => setMood('feliz')} aria-label="Feliz"><Smile color="#f59e0b"/></button>
@@ -80,7 +151,7 @@ function DiarioPessoal() {
                     </div>
                 </section>
             </main>
-            <Footer />
+            </HeaderPaciente>
         </>
     );
 }

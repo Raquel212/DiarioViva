@@ -1,299 +1,461 @@
-/* --- Sidebar --- */
+/* ==========================================================================
+   DARYVIVA — SHELL (Paciente)
+   Layout: sidebar à esquerda + área de conteúdo ao lado, via flexbox.
+   A sidebar estica junto com o conteúdo (flex) alcançando header e footer,
+   e usa sticky para se manter no topo (top:0) ao rolar a página.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   CONTÊINER GERAL (flex) — sidebar + conteúdo lado a lado
+   -------------------------------------------------------------------------- */
+.dv-shell {
+  display: flex;
+  align-items: stretch;
+  width: 100%;
+  min-height: 100vh;
+  background-color: #f3f4f6;
+}
+
+/* Área de conteúdo: ocupa todo o espaço restante após a sidebar */
+.dv-shell-body {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Conteúdo da página: cresce e empurra o footer para baixo */
+.dv-shell-content {
+  flex: 1 0 auto;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* Backdrop usado no menu mobile (off-canvas) */
+.dv-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(17, 24, 39, 0.5);
+  z-index: 105;
+  animation: dvFade 0.2s ease;
+}
+
+@keyframes dvFade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* --------------------------------------------------------------------------
+   SIDEBAR — menu moderno (nova identidade)
+   -------------------------------------------------------------------------- */
 .sidebarPaciente {
-    width: 230px;
-    background-color: #f3f4f6;
-    color: #0d9488; 
-    height: 100vh;
-    position: fixed;
-    top: 0;
-    left: 0;
-    display: flex;
-    flex-direction: column;
-    transition: width 0.3s ease-in-out;
-    z-index: 100;
+  width: 190px;
+  flex-shrink: 0;
+  height: auto;
+  min-height: 100vh;
+  background-color: #ffffff;
+  color: #0d9488;
+  display: flex;
+  flex-direction: column;
+  transition: width 0.3s ease-in-out;
+  z-index: 110;
+  border-right: 1px solid #eef1f4;
+  box-shadow: 0 0 24px rgba(17, 24, 39, 0.06);
 }
 
 .sidebarPaciente.collapsed {
-    width: 80px;
-    
-}
-.sidebarPaciente.collapsed .sidebarTitlePaciente {
-    display: none;
+  width: 70px;
 }
 
-/* Header Sidebar */
-.sidebarHeaderPaciente {
-    padding: 27.5px;
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    border-bottom: 1px solid #e5e7eb;
-    flex-shrink: 0;
-    overflow: hidden;
-}
-.sidebarPaciente.collapsed .sidebarHeaderPaciente {
-    padding: 27.8px;
-}
-
-.sidebarLogoPaciente {
-    height: 2.5rem;
-    width: 2.5rem;
-    flex-shrink: 0;
+/* Marca (logo em chip gradiente + nome) */
+.dv-brand {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  height: 89px;
+  padding: 0 1rem;
+  border-bottom: 1px solid #f1f5f9;
+  flex-shrink: 0;
+  box-sizing: border-box;
+  overflow: hidden;
 }
 
-.sidebarTitlePaciente {
-    font-size: 25px;
-    font-weight: 600;
-    color: #0d9488;
-    white-space: nowrap;
+.dv-brand-logo {
+  width: 42px;
+  height: 42px;
+  border-radius: 13px;
+  background: linear-gradient(135deg, #14b8a6, #0d9488);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 8px 16px -6px rgba(13, 148, 136, 0.5);
 }
 
-.sidebarPaciente.collapsed .sidebarTitlePaciente {
-    font-size: 1.25rem;
+.dv-brand-name {
+  font-size: 1.08rem;
+  font-weight: 800;
+  color: #0f766e;
+  white-space: nowrap;
+  letter-spacing: 0.2px;
+  margin: 0;
+}
 
+.sidebarPaciente.collapsed .dv-brand-name {
+  display: none;
+}
+
+.sidebar-close-mobile {
+  display: none;
+  margin-left: auto;
+  background: none;
+  border: none;
+  color: #0d9488;
+  cursor: pointer;
+  padding: 0.25rem;
+  border-radius: 0.375rem;
+}
+
+.sidebar-close-mobile:hover {
+  background-color: #f0fdfa;
 }
 
 /* Navegação */
-.sidebarNavPaciente {
-    flex-grow: 1;
-    padding: 1rem 0;
-    overflow-y: auto;
+.dv-nav {
+  flex-grow: 1;
+  padding: 1.1rem 0.75rem;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
-.navListPaciente {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+.dv-nav-label {
+  margin: 0 0 0.55rem 0.5rem;
+  font-size: 10.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #9ca3af;
+  white-space: nowrap;
 }
 
-.navItemPaciente a {
-    display: flex;
-    align-items: center;
-    padding: 0.5rem 1rem;
-    color: #0d9488;
-    text-decoration: none;
-    font-size: 20px;
-    transition: background-color 0.2s, color 0.2s;
-    margin-bottom: 10px;
+.sidebarPaciente.collapsed .dv-nav-label {
+  display: none;
 }
 
-.navItemPaciente a:hover {
-    background-color: #14b8a6;
-    color: white;
+.dv-nav-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
 }
 
-.sidebarPaciente.collapsed .navItemPaciente a {
-    font-size: 1rem;
-    justify-content: center;
+.dv-nav-item {
+  margin: 0;
 }
 
-/* Ícones */
-.navIconPaciente {
-    width: 25px;
-    height: 25px;
-    margin-right: 0.5rem;
-    transition: margin-right 0.3s, width 0.2s, height 0.2s;
+.dv-nav-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 10px;
+  color: #475569;
+  text-decoration: none;
+  font-size: 14.5px;
+  font-weight: 600;
+  border-radius: 13px;
+  transition: background-color 0.18s, color 0.18s, transform 0.18s,
+    box-shadow 0.18s;
 }
 
-.sidebarPaciente.collapsed .navIconPaciente {
-    width: 25px;
-    height: 25px;
-    margin-right: 0;
+.dv-nav-chip {
+  width: 36px;
+  height: 34px;
+  border-radius: 10px;
+  background: #f1f5f9;
+  color: #0d9488;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background-color 0.18s, color 0.18s;
 }
 
-/* Labels */
-.navLabel {
-    display: inline-block;
-    transition: opacity 0.2s;
+.dv-nav-label-text {
+  white-space: nowrap;
+  transition: opacity 0.2s;
 }
 
-.sidebarPaciente.collapsed .navLabel {
-    display: none;
+/* Hover */
+.dv-nav-link:hover {
+  background-color: #f0fdfa;
+  color: #0f766e;
+  transform: translateX(2px);
 }
 
-/* Footer / Botão de colapsar */
-.sidebarFooterPaciente {
-    padding: 23px;
-    border-top: 1px solid #e5e7eb;
-    margin-top: auto;
-    display: flex;
-    justify-content: center;
+.dv-nav-link:hover .dv-nav-chip {
+  background-color: #ccfbf1;
 }
 
-.sidebarPaciente.collapsed .sidebarFooterPaciente {
-    padding: 24.1px;
+/* Estado ativo (pill com gradiente) */
+.dv-nav-link.active {
+  background: linear-gradient(135deg, #0d9488, #0f766e);
+  color: #ffffff;
+  box-shadow: 0 10px 20px -10px rgba(13, 148, 136, 0.65);
 }
 
-.sidebarFooterPaciente:hover {
-    background-color: #14b8a6;
-    color: white;
+.dv-nav-link.active .dv-nav-chip {
+  background: rgba(255, 255, 255, 0.18);
+  color: #ffffff;
 }
 
-.toggleButtonPaciente {
-    background-color: transparent;
-    border: none;
-    color: #0d9488;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: transform 0.3s;
-    font-size: 1.25rem;
-    width: 100%;        
-    min-width: 40px;      
-    height: 41px;       
-    border-radius: 0.5rem; 
+/* Colapsada: só ícones centralizados */
+.sidebarPaciente.collapsed .dv-nav-link {
+  justify-content: center;
+  padding: 8px;
 }
 
-.toggleButtonPaciente svg {
-    width: 1.5rem;
-    height: 1.5rem;
+.sidebarPaciente.collapsed .dv-nav-label-text {
+  display: none;
 }
 
-.sidebarPaciente.collapsed .toggleButtonPaciente {
-    font-size: 1rem;        
-    width: 40px;          
-    height: 40px;          
-    min-width: 0;           
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
+/* Rodapé da sidebar (botão de recolher/expandir) */
+.dv-sidebar-footer {
+  padding: 0.9rem 0.75rem;
+  border-top: 1px solid #f1f5f9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
 }
 
-/* Conteúdo principal */
+.dv-collapse-btn {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  color: #0d9488;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  height: 42px;
+  border-radius: 12px;
+}
+
+.dv-collapse-btn:hover {
+  background-color: #f0fdfa;
+  border-color: #0d9488;
+  color: #0f766e;
+}
+
+.sidebarPaciente:not(.collapsed) .dv-collapse-btn {
+  width: 100%;
+}
+
+.sidebarPaciente.collapsed .dv-collapse-btn {
+  width: 42px;
+}
+
+/* --------------------------------------------------------------------------
+   BARRA SUPERIOR (topbar)
+   -------------------------------------------------------------------------- */
 .headerPaciente {
-    background-color: #f3f4f6;
-    padding: 0 2rem;
-    height: 89px;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    flex-shrink: 0;
-    border-bottom: 1px solid #e5e7eb;
+  background-color: #ffffff;
+  padding: 0 2rem;
+  height: 89px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex-shrink: 0;
+  border-bottom: 1px solid #e5e7eb;
+  z-index: 90;
+  box-shadow: 0 1px 3px rgba(17, 24, 39, 0.05);
+}
+
+.hamburger-btn {
+  display: none;
+  background: none;
+  border: 1px solid #d9e6e3;
+  border-radius: 0.5rem;
+  color: #0d9488;
+  cursor: pointer;
+  margin-right: auto;
+  padding: 0.5rem;
+  transition: background-color 0.18s, border-color 0.18s;
+}
+
+.hamburger-btn:hover {
+  background-color: #f0fdfa;
+  border-color: #0d9488;
 }
 
 .userMenuPaciente {
-    position: relative;
+  position: relative;
+  display: flex;
+  align-items: center;
 }
 
 .userButtonPaciente {
-    background: none;
-    border: none;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 10px;
+  background: none;
+  border: 1px solid transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0.35rem 0.6rem 0.35rem 0.35rem;
+  border-radius: 9999px;
+  transition: background-color 0.18s, border-color 0.18s;
+}
+
+.userButtonPaciente:hover,
+.userButtonPaciente[aria-expanded="true"] {
+  background-color: #f0fdfa;
+  border-color: #99f6e4;
 }
 
 .userAvatarPaciente {
-    width: 2.5rem;
-    height: 2.5rem;
-    border-radius: 9999px;
-    object-fit: cover;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 9999px;
+  object-fit: cover;
+  border: 2px solid #ccfbf1;
 }
 
 .userNamePaciente {
-    font-weight: 600;
-    color: #0d9488;
-    font-size: 16px;
+  font-weight: 600;
+  color: #0f172a;
+  font-size: 15px;
 }
 
 .arrowIcon {
-    width: 30px;
-    height: 30px;
-    color: #0d9488;
-    transition: transform 0.3s ease;
+  width: 26px;
+  height: 26px;
+  color: #0d9488;
+  transition: transform 0.3s ease;
 }
 
 .rotate {
-    transform: rotate(180deg);
+  transform: rotate(180deg);
 }
 
 .dropdownMenuPaciente {
-    position: absolute;
-    right: 0;
-    top: calc(100% + 0.5rem);
-    background-color: white;
-    border-radius: 0.5rem;
-    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-    width: 200px;
-    z-index: 50;
-    overflow: hidden;
-    border: 1px solid #cce7e2;
+  position: absolute;
+  right: 0;
+  top: calc(100% + 0.5rem);
+  background-color: #ffffff;
+  border-radius: 0.75rem;
+  box-shadow: 0 12px 24px -6px rgb(0 0 0 / 0.14), 0 4px 8px -6px rgb(0 0 0 / 0.06);
+  width: 210px;
+  z-index: 95;
+  overflow: hidden;
+  border: 1px solid #e0ece9;
+  padding: 0.35rem;
+  animation: dropdownIn 0.15s ease;
+}
+
+@keyframes dropdownIn {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 .dropdownListPaciente {
-    list-style: none;
-    padding: 0.5rem 0;
-    margin: 0;
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
 .dropdownItemPaciente a {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    padding: 0.5rem 1rem;
-    color: #0d9488;
-    text-decoration: none;
-    font-size: 16px;
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 0.55rem 0.75rem;
+  color: #344054;
+  text-decoration: none;
+  font-size: 15px;
+  border-radius: 0.5rem;
+  transition: background-color 0.15s, color 0.15s;
 }
 
 .dropdownItemPaciente a:hover {
-    background-color: #14b8a6;
-    color: white;
+  background-color: #f0fdfa;
+  color: #0d9488;
 }
 
-.dropdownDividerPaciente {
-    height: 1px;
-    background-color: #cce7e2;
-    margin: 0.5rem 0;
+.dropdownIconPaciente {
+  color: #0d9488;
+  flex-shrink: 0;
 }
 
-.contentAreaPaciente {
-    flex-grow: 1;
-    padding: 2rem;
-}
+/* --------------------------------------------------------------------------
+   RESPONSIVIDADE
+   --------------------------------------------------------------------------
+   Em telas a partir de 768px a sidebar fica sempre expandida, com título e
+   textos visíveis. O recolhimento para 80px ocorre somente pelo botão da
+   própria sidebar. Abaixo de 767px ela vira menu off-canvas.
+   -------------------------------------------------------------------------- */
 
-/* ----- Responsividade ----- */
+/* Mobile: sidebar vira off-canvas */
+@media (max-width: 767px) {
+  .dv-shell {
+    display: block;
+  }
 
-@media (max-width: 1024px) {
+  .dv-shell-body {
+    min-height: 100vh;
+  }
+
   .sidebarPaciente {
-    width: 80px !important; 
+    width: 272px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in-out;
+    box-shadow: 8px 0 30px rgba(0, 0, 0, 0.18);
   }
 
-  .sidebarTitlePaciente,
-  .navLabel {
-    display: none !important; 
+  .sidebarPaciente.mobile-open {
+    transform: translateX(0);
   }
 
-  .sidebarFooterPaciente {
-    display: none !important; /
+  /* No mobile mostramos título + labels novamente */
+  .sidebarPaciente .dv-brand-name,
+  .sidebarPaciente .dv-nav-label,
+  .sidebarPaciente .dv-nav-label-text {
+    display: block;
   }
 
-  .mainContentPaciente {
-    margin-left: 80px; 
-  }
-}
-
-@media (max-width: 768px) {
-  .sidebarPaciente {
-    width: 80px !important; 
-
+  .sidebarPaciente .dv-brand {
+    justify-content: flex-start;
+    padding: 1.1rem 1rem;
   }
 
-  .sidebarPaciente .sidebarTitlePaciente,
-  .sidebarPaciente .navLabel,
-  .sidebarFooterPaciente {
-    display: none !important; 
-    
+  .sidebar-close-mobile {
+    display: flex;
   }
 
-  .sidebarPaciente.collapsed {
-    width: 80px !important; 
+  .sidebarPaciente .dv-nav-link {
+    justify-content: flex-start;
+    font-size: 16px;
   }
 
-  .mainContentPaciente {
-    margin-left: 80px;
+  .sidebarPaciente .dv-sidebar-footer {
+    display: none;
+  }
+
+  .hamburger-btn {
+    display: block;
+  }
+
+  .headerPaciente {
+    padding: 0 1rem;
+  }
+
+  .userNamePaciente {
+    display: none;
   }
 }

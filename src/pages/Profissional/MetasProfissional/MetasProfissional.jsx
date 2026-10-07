@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { CheckSquare, ChevronDown, PlusCircle, Trash2, Edit } from 'lucide-react';
 import './metasProfissional.css';
 import HeaderProfissional from '../../../components/HeaderProfissional/HeaderProfissional';
-import Footer from '../../../components/Footer/Footer';
 
 function MetasProfissional() {
   const [pacientes, setPacientes] = useState([
@@ -107,7 +106,7 @@ function MetasProfissional() {
 
   return (
     <>
-      <HeaderProfissional />
+      <HeaderProfissional>
       <section className="page-section_metasPg">
         <div className="section-header_metasPg">
           <CheckSquare />
@@ -270,7 +269,7 @@ function MetasProfissional() {
         </div>
       )}
 
-      <Footer />
+      </HeaderProfissional>
     </>
   );
 }

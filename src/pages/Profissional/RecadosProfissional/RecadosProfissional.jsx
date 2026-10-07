@@ -1,8 +1,12 @@
 import { useState } from 'react';
-import { MessageSquare, ThumbsUp } from 'lucide-react';
+import { MessageSquare, ThumbsUp, Sparkles, Send } from 'lucide-react';
 import './recadosProfissional.css';
 import HeaderProfissional from '../../../components/HeaderProfissional/HeaderProfissional';
-import Footer from '../../../components/Footer/Footer';
+import {
+  chatCompletion,
+  getAIErrorMessage,
+  isAIConfigured,
+} from '../../../services/ai';
 
 function RecadosProfissional() {
     const [recados, setRecados] = useState([
@@ -70,6 +74,58 @@ function RecadosProfissional() {
 
   const [novoComentario, setNovoComentario] = useState({});
 
+  const [novoRecado, setNovoRecado] = useState("");
+  const [gerandoRecado, setGerandoRecado] = useState(false);
+  const [erroRecado, setErroRecado] = useState("");
+
+  const gerarRecadoComIA = async () => {
+    if (!isAIConfigured()) {
+      setErroRecado("Configure a IA no assistente flutuante (ícone de brilho ✨) para usar este recurso.");
+      return;
+    }
+    setGerandoRecado(true);
+    setErroRecado("");
+    try {
+      const resposta = await chatCompletion({
+        system: `Você é o assistente de um profissional de saúde do DiárioViva.
+Escreva um recado curto (2 a 4 frases), em português do Brasil, com tom acolhedor e motivador, para ser enviado a um paciente em acompanhamento.
+O recado deve incentivar a continuidade das metas e o registro no diário, mas de forma realista e sem promessas médicas.
+Responda apenas com o texto do recado.`,
+        messages: [
+          {
+            role: 'user',
+            content: `Escreva um recado de apoio e motivação para um paciente que está seguindo suas metas diárias de saúde.`,
+          },
+        ],
+        maxTokens: 300,
+      });
+      setNovoRecado(resposta);
+    } catch (err) {
+      setErroRecado(getAIErrorMessage(err.message || 'AI_SERVER'));
+    } finally {
+      setGerandoRecado(false);
+    }
+  };
+
+  const enviarRecado = (e) => {
+    e.preventDefault();
+    const texto = novoRecado.trim();
+    if (!texto || gerandoRecado) return;
+    setRecados([
+      {
+        id: Date.now(),
+        profissional: "Dr. Carlos",
+        tempo: "Agora",
+        mensagem: texto,
+        curtidas: 0,
+        comentarios: [],
+      },
+      ...recados,
+    ]);
+    setNovoRecado("");
+    setErroRecado("");
+  };
+
   const handleCurtir = (id) => {
     setRecados(
       recados.map((r) =>
@@ -109,12 +165,44 @@ function RecadosProfissional() {
 
   return (
     <>
-      <HeaderProfissional />
+      <HeaderProfissional>
       <section className="page-section-recadosProfissional">
         <div className="section-header-recadosProfissional">
           <MessageSquare size={28} color="#0d9488" />
           <h2>Recados para o Paciente</h2>
         </div>
+
+        <form className="composer-recados-profissional" onSubmit={enviarRecado}>
+          <div className="composer-header">
+            <h3>Novo recado</h3>
+            <button
+              type="button"
+              className="composer-ai-btn"
+              onClick={gerarRecadoComIA}
+              disabled={gerandoRecado}
+            >
+              <Sparkles size={15} />
+              {gerandoRecado ? "Gerando..." : "Gerar com IA"}
+            </button>
+          </div>
+          <textarea
+            placeholder="Escreva um recado de apoio ou orientação para o paciente..."
+            value={novoRecado}
+            onChange={(e) => setNovoRecado(e.target.value)}
+            rows={3}
+          ></textarea>
+          {erroRecado && <p className="composer-error">{erroRecado}</p>}
+          <div className="composer-actions">
+            <button
+              type="submit"
+              className="composer-send-btn"
+              disabled={!novoRecado.trim() || gerandoRecado}
+            >
+              <Send size={16} />
+              Enviar recado
+            </button>
+          </div>
+        </form>
 
         <div className="recados-container-recadosProfissional">
           {recados.map((recado) => (
@@ -163,7 +251,7 @@ function RecadosProfissional() {
           ))}
         </div>
       </section>
-      <Footer />
+      </HeaderProfissional>
     </>
   );
 }

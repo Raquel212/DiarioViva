@@ -100,3 +100,20 @@
     color: #374151;
     white-space: pre-wrap;
 }
+
+/* ===== Responsividade ===== */
+@media (max-width: 640px) {
+    .page-section_diariosPg {
+        padding: 1rem;
+        margin-top: 16px;
+        margin-bottom: 16px;
+    }
+
+    .paciente-header_diariosPg {
+        padding: 1rem;
+    }
+
+    .paciente-diarios-content_diariosPg {
+        padding: 0 1rem 1rem;
+    }
+}

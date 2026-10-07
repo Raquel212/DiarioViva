@@ -2,20 +2,24 @@
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    margin-bottom: 1rem;
     font-size: 1.25rem;
     font-weight: 600;
-    color: #14b8a6; 
+    color: #14b8a6;
     max-width: 900px;
-    margin: 2rem auto;
+    margin: 2rem auto 0.5rem;
+    padding: 0 1rem;
+    box-sizing: border-box;
 }
 
 .historico-toolbar_historicoPg {
     display: flex;
     gap: 1rem;
+    flex-wrap: wrap;
     margin-bottom: 1.5rem;
     max-width: 900px;
-    margin: 2rem auto;
+    margin: 0 auto 1.5rem;
+    padding: 0 1rem;
+    box-sizing: border-box;
 }
 
 .historico-toolbar_historicoPg select {
@@ -57,13 +61,15 @@
 }
 
 .a4-container {
-    width: 210mm;
+    width: 100%;
+    max-width: 210mm;
     min-height: 297mm;
-    margin: 0 auto 2rem auto; 
-    padding: 2rem;
+    margin: 0 auto 2rem auto;
+    padding: 1.5rem;
     background-color: #fff;
     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     border-radius: 0.5rem;
+    box-sizing: border-box;
 }
 
 
@@ -142,5 +148,49 @@
     left: 0;
     top: 0;
     box-shadow: none;
+  }
+}
+
+/* ===== Responsividade ===== */
+@media (max-width: 640px) {
+  .section-header_historicoPg {
+    margin: 1.25rem auto 0.5rem;
+  }
+
+  .historico-toolbar_historicoPg {
+    flex-direction: column;
+    margin: 0 0 1.25rem;
+    padding: 0 1rem;
+  }
+
+  .historico-toolbar_historicoPg select {
+    width: 100%;
+    flex: none;
+  }
+
+  .actions_historicoPg {
+    width: 100%;
+  }
+
+  .actions_historicoPg .action-btn {
+    flex: 1;
+    justify-content: center;
+  }
+
+  .a4-container {
+    padding: 0.75rem;
+    border-radius: 0;
+  }
+
+  .report_historicoPg {
+    padding: 1.5rem 1rem;
+  }
+
+  .report-header_historicoPg h2 {
+    font-size: 1.25rem;
+  }
+
+  .info-grid_historicoPg {
+    grid-template-columns: 1fr;
   }
 }

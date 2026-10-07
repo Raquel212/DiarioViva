@@ -206,3 +206,108 @@
     flex-direction: column;
     align-items: flex-end;
 }
+
+/* ===== Resumo com IA ===== */
+.ai-resumo-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-bottom: 1rem;
+    background: linear-gradient(135deg, #14b8a6, #0d9488);
+    color: #fff;
+    border: none;
+    padding: 0.55rem 1rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.ai-resumo-btn:hover:not(:disabled) {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 14px rgba(13, 148, 136, 0.35);
+}
+
+.ai-resumo-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.ai-resumo-box {
+    background: #f0fdfa;
+    border: 1px solid #99f6e4;
+    border-left: 4px solid #14b8a6;
+    border-radius: 10px;
+    padding: 1rem;
+    margin-bottom: 1.25rem;
+    animation: aiFadeIn 0.2s ease;
+}
+
+.ai-resumo-header {
+    font-weight: 600;
+    color: #0d9488;
+    font-size: 0.85rem;
+    margin-bottom: 0.4rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+}
+
+.ai-resumo-box p {
+    color: #374151;
+    margin: 0;
+    line-height: 1.55;
+    white-space: pre-wrap;
+}
+
+.ai-suggestion-error {
+    background: #fef2f2;
+    border: 1px solid #fecaca;
+    color: #b91c1c;
+    padding: 0.6rem 0.8rem;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    margin: 0 0 1rem;
+}
+
+@keyframes aiFadeIn {
+    from { opacity: 0; transform: translateY(4px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== Responsividade ===== */
+@media (max-width: 640px) {
+    .container-VerPerfil {
+        padding: 1rem;
+        margin-top: 16px;
+        margin-bottom: 16px;
+    }
+
+    .perfil-header-VerPerfil {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 1.25rem;
+    }
+
+    .perfil-contato-VerPerfil {
+        flex-direction: column;
+        gap: 0.5rem;
+        align-items: center;
+    }
+
+    .metas-list-VerPerfil .list-item-VerPerfil {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+
+    .anotacoes-form-VerPerfil {
+        align-items: stretch;
+    }
+
+    .action-btn-VerPerfil {
+        width: 100%;
+    }
+}

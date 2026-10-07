@@ -1,8 +1,12 @@
 import { useState } from 'react';
-import { Phone, Mail, CheckSquare, BookOpen, MessageSquare, Save, Smile, Meh, Frown } from 'lucide-react';
+import { Phone, Mail, CheckSquare, BookOpen, MessageSquare, Save, Smile, Meh, Frown, Sparkles } from 'lucide-react';
 import './verPerfil.css';
 import HeaderProfissional from '../../../components/HeaderProfissional/HeaderProfissional';
-import Footer from '../../../components/Footer/Footer';
+import {
+  chatCompletion,
+  getAIErrorMessage,
+  isAIConfigured,
+} from '../../../services/ai';
 
 function VerPerfil() {
     const paciente = {
@@ -25,6 +29,9 @@ function VerPerfil() {
 
     const [anotacoes, setAnotacoes] = useState([]);
     const [novaAnotacao, setNovaAnotacao] = useState("");
+    const [resumoIA, setResumoIA] = useState("");
+    const [aiLoading, setAiLoading] = useState(false);
+    const [aiError, setAiError] = useState("");
 
     const handleAddAnotacao = (e) => {
         e.preventDefault();
@@ -41,6 +48,39 @@ function VerPerfil() {
         setNovaAnotacao(""); 
     };
 
+    const gerarResumoDiario = async () => {
+        if (!isAIConfigured()) {
+            setAiError('Configure a IA no assistente flutuante (ícone de brilho ✨) para usar este recurso.');
+            return;
+        }
+        setAiLoading(true);
+        setAiError("");
+        setResumoIA("");
+        try {
+            const entradas = diario
+                .map(
+                    (d) =>
+                        `- ${d.data} às ${d.horario} (humor: ${d.mood}): ${d.texto}`
+                )
+                .join("\n");
+            const resposta = await chatCompletion({
+                system: `Você é um assistente clínico do DiárioViva que apoia profissionais de saúde.
+Gere um resumo objetivo, em português do Brasil, das anotações do diário do paciente.
+Use tópicos curtos (máx. 2 frases por tópico). Destaque: padrões de humor, adesão a metas, possíveis pontos de atenção e sugestões de acompanhamento.
+Encerre com a observação de que decisões clínicas são do profissional responsável.`,
+                messages: [
+                    { role: 'user', content: `Diário do paciente ${paciente.nome}:\n${entradas}` },
+                ],
+                maxTokens: 700,
+            });
+            setResumoIA(resposta);
+        } catch (err) {
+            setAiError(getAIErrorMessage(err.message || 'AI_SERVER'));
+        } finally {
+            setAiLoading(false);
+        }
+    };
+
     const MoodIcon = ({ mood }) => {
         switch (mood) {
             case 'feliz': return <Smile color="#f59e0b" />;
@@ -52,7 +92,7 @@ function VerPerfil() {
 
     return (
         <>
-            <HeaderProfissional />
+            <HeaderProfissional>
 
             <section className="page-section-VerPerfil">
                 <div className="container-VerPerfil">
@@ -93,6 +133,28 @@ function VerPerfil() {
                             <BookOpen style={{ marginTop: "20px" }}/>
                             <h2 style={{ marginTop: "18px" }}>Histórico do Diário</h2>
                         </div>
+
+                        <button
+                            type="button"
+                            className="ai-resumo-btn"
+                            onClick={gerarResumoDiario}
+                            disabled={aiLoading}
+                        >
+                            <Sparkles size={16} />
+                            {aiLoading ? 'Gerando resumo...' : 'Resumo do diário com IA'}
+                        </button>
+
+                        {aiError && <p className="ai-suggestion-error">{aiError}</p>}
+
+                        {resumoIA && (
+                            <div className="ai-resumo-box">
+                                <div className="ai-resumo-header">
+                                    <span><Sparkles size={14} /> Resumo gerado pela IA</span>
+                                </div>
+                                <p>{resumoIA}</p>
+                            </div>
+                        )}
+
                         <div className="diario-history-list-VerPerfil">
                             {diario.map((entry, index) => (
                                 <div className="diario-entry-VerPerfil" key={index}>
@@ -141,7 +203,7 @@ function VerPerfil() {
                 </div>
             </section>
 
-            <Footer />
+            </HeaderProfissional>
         </>
     );
 }

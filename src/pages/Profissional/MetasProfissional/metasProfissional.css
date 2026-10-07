@@ -225,3 +225,53 @@
   border: none;
   cursor: pointer;
 }
+
+/* ===== Responsividade ===== */
+@media (max-width: 640px) {
+  .page-section_metasPg {
+    padding: 1rem;
+    margin-top: 16px;
+    margin-bottom: 16px;
+  }
+
+  .paciente-header_metasPg {
+    padding: 1rem;
+  }
+
+  .meta-item_metasPg {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+  }
+
+  .meta-actions_metasPg {
+    justify-content: flex-end;
+  }
+
+  .paciente-metas-content_metasPg {
+    padding: 0 1rem 1rem;
+  }
+
+  .add-meta-form_metasPg .action-btn_metasPg {
+    width: 100%;
+    align-self: stretch;
+  }
+
+  .modal-content_metasPg {
+    padding: 1.25rem;
+    width: 100%;
+    max-width: none;
+  }
+
+  .form-group_metasPg {
+    flex-direction: column;
+  }
+
+  .modal-actions_metasPg {
+    flex-direction: column-reverse;
+  }
+
+  .modal-actions_metasPg button {
+    width: 100%;
+  }
+}

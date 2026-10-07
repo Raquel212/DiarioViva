@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import { BookText, ChevronDown, Smile, Meh, Frown, Heater } from 'lucide-react';
+import { BookText, ChevronDown, Smile, Meh, Frown } from 'lucide-react';
 import './diarioProfissional.css';
-import Footer from '../../../components/Footer/Footer';
 import HeaderProfissional from '../../../components/HeaderProfissional/HeaderProfissional';
 
 function DiariosProfissional() {
@@ -42,7 +41,7 @@ function DiariosProfissional() {
     return (
 
         <>
-            <HeaderProfissional />
+            <HeaderProfissional>
             <section className="page-section_diariosPg">
                 <div className="section-header_diariosPg">
                     <BookText/>
@@ -77,7 +76,7 @@ function DiariosProfissional() {
                     ))}
                 </div>
             </section>
-            <Footer/>
+            </HeaderProfissional>
         </>
 
         

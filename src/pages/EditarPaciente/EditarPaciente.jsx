@@ -2,7 +2,6 @@ import { Save, Trash2 } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./editarPaciente.css";
-import Footer from "../../components/Footer/Footer";
 import HeaderPaciente from "../../components/HeaderPaciente/HeaderPaciente";
 
 function EditarPerfilPaciente() {
@@ -73,7 +72,7 @@ function EditarPerfilPaciente() {
 
   return (
     <>
-      <HeaderPaciente />
+      <HeaderPaciente>
 
       {/* Toast */}
       {toast && <div className="toast">{toast}</div>}
@@ -210,7 +209,7 @@ function EditarPerfilPaciente() {
         </div>
       )}
 
-      <Footer />
+      </HeaderPaciente>
     </>
   );
 }

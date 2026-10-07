@@ -2,7 +2,6 @@ import { useState } from "react";
 import { CheckCircle2, MessageSquare, Bell, User } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import HeaderProfissional from "../../../components/HeaderProfissional/HeaderProfissional";
-import Footer from "../../../components/Footer/Footer";
 import "./notificacaoProfissional.css";
 
 function NotificacaoProfissional() {
@@ -65,7 +64,7 @@ function NotificacaoProfissional() {
 
   return (
     <>
-      <HeaderProfissional />
+      <HeaderProfissional>
 
       <div className="profile-page-container-profissional">
         <div className="profile-card-profissional">
@@ -114,7 +113,7 @@ function NotificacaoProfissional() {
         </div>
       </div>
 
-      <Footer />
+      </HeaderProfissional>
     </>
   );
 }

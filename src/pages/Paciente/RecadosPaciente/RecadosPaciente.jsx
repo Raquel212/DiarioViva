@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { MessageSquare, ThumbsUp } from 'lucide-react';
 import './recadosPaciente.css';
 import HeaderPaciente from '../../../components/HeaderPaciente/HeaderPaciente';
-import Footer from '../../../components/Footer/Footer';
 
 function RecadosPaciente() {
     const [recados, setRecados] = useState([
@@ -72,7 +71,7 @@ function RecadosPaciente() {
 
     return (
         <>
-            <HeaderPaciente />
+            <HeaderPaciente>
             <section className="page-section-recadosPaciente">
                 <div className="section-header-recadosPaciente">
                     <MessageSquare size={28} color="#0d9488" />
@@ -113,7 +112,7 @@ function RecadosPaciente() {
                     ))}
                 </div>
             </section>
-            <Footer />
+            </HeaderPaciente>
         </>
     );
 }

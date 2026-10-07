@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { CheckSquare, PlusCircle } from 'lucide-react';
 import './minhasMetas.css';
 import HeaderPaciente from '../../../components/HeaderPaciente/HeaderPaciente';
-import Footer from '../../../components/Footer/Footer';
 
 function MinhasMetas() {
     const [metas, setMetas] = useState([
@@ -36,7 +35,7 @@ function MinhasMetas() {
 
     return (
         <>
-            <HeaderPaciente />
+            <HeaderPaciente>
             <section className="page-section-minhasMetasPaciente">
                 <div className="section-header-minhasMetasPaciente">
                     <CheckSquare size={28} color="#0d9488" />
@@ -76,7 +75,7 @@ function MinhasMetas() {
                     </div>
                 </div>
             </section>
-            <Footer />
+            </HeaderPaciente>
         </>
     );
 }

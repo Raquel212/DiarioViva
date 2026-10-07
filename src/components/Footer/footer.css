@@ -1,13 +1,21 @@
+/* ==========================================================================
+   DARYVIVA — FOOTER (rodapé das páginas)
+   Usado tanto nas páginas públicas (Home/Login/Cadastro) quanto nas páginas
+   internas (com sidebar). Fica sempre ao final do fluxo do conteúdo.
+   ========================================================================== */
 .footer {
   background-color: #f3f4f6;
   border-top: 1px solid #e5e7eb;
   margin-top: auto;
+  padding: 0 1rem;
+  width: 100%;
 }
 
 .footer-container {
   max-width: 1280px;
+  width: 100%;
   margin: 0 auto;
-  padding: 1.5rem 1.5rem;
+  padding: 1.0rem 0;
   text-align: center;
   color: #6b7280;
 }
@@ -19,4 +27,13 @@
 .footer-tagline {
   font-size: 0.875rem;
   margin-top: 0.25rem;
+}
+
+@media (max-width: 640px) {
+  .footer-container {
+    font-size: 0.85rem;
+  }
+  .footer-container p {
+    padding: 0 0.5rem;
+  }
 }

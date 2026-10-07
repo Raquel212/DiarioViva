@@ -270,3 +270,32 @@ textarea.form-control-EditarPaciente {
     grid-template-columns: 1fr 1fr;
   }
 }
+
+/* ===== Responsividade mobile ===== */
+@media (max-width: 640px) {
+  .profile-card-EditarPaciente {
+    margin-top: 16px;
+    margin-bottom: 16px;
+  }
+
+  .profile-card-header-EditarPaciente {
+    padding: 1.25rem;
+  }
+
+  .profile-card-body-EditarPaciente {
+    padding: 1.25rem;
+  }
+
+  .profile-actions-EditarPaciente {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    text-align: center;
+  }
+
+  .profile-actions-EditarPaciente button {
+    width: 100%;
+    justify-content: center;
+    margin-left: 0;
+  }
+}

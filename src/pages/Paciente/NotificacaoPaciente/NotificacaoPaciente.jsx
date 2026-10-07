@@ -2,7 +2,6 @@ import { useState } from "react";
 import { CheckCircle2, MessageSquare, Bell, User } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import HeaderPaciente from "../../../components/HeaderPaciente/HeaderPaciente";
-import Footer from "../../../components/Footer/Footer";
 import "./notificacaoPaciente.css";
 
 function NotificacaoPaciente() {
@@ -66,7 +65,7 @@ function NotificacaoPaciente() {
 
   return (
     <>
-      <HeaderPaciente />
+      <HeaderPaciente>
 
       <div className="profile-page-container">
         <div className="profile-card">
@@ -112,7 +111,7 @@ function NotificacaoPaciente() {
         </div>
       </div>
 
-      <Footer />
+      </HeaderPaciente>
     </>
   );
 }

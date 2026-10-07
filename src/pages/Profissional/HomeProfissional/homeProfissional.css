@@ -1,165 +1,358 @@
-.profissional-dashboard {
-    max-width: 900px;
-    margin: 0 auto;
-    display: flex;
+/* ==========================================================================
+   HOME PROFISSIONAL — Dashboard moderno e responsivo
+   ========================================================================== */
+
+.profissional-dashboard.dv-home-prof {
+  max-width: 960px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 2rem 1.5rem 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  box-sizing: border-box;
+}
+
+/* --------------------------------------------------------------------------
+   HERO
+   -------------------------------------------------------------------------- */
+.dv-hero {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1.25rem;
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  color: #fff;
+  background: linear-gradient(135deg, #1f2937 0%, #0d9488 80%, #14b8a6 100%);
+  box-shadow: 0 14px 30px -10px rgba(13, 148, 136, 0.5);
+}
+
+.dv-hero::after {
+  content: '';
+  position: absolute;
+  right: -40px;
+  top: -40px;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.dv-hero-date {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.8rem;
+  letter-spacing: 0.04em;
+  opacity: 0.92;
+  background: rgba(255, 255, 255, 0.16);
+  padding: 0.3rem 0.8rem;
+  border-radius: 9999px;
+  margin-bottom: 0.75rem;
+}
+
+.dv-hero-text h1 {
+  font-size: 1.8rem;
+  margin: 0 0 0.35rem;
+  font-weight: 800;
+}
+
+.dv-hero-text p {
+  margin: 0;
+  font-size: 1rem;
+  opacity: 0.95;
+  max-width: 32rem;
+}
+
+.dv-hero-badge {
+  position: relative;
+  z-index: 1;
+  flex-shrink: 0;
+  min-width: 110px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  background: rgba(255, 255, 255, 0.16);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 1rem;
+  padding: 1rem;
+  text-align: center;
+}
+
+.dv-hero-badge strong {
+  font-size: 1.3rem;
+  line-height: 1;
+}
+
+.dv-hero-badge span {
+  font-size: 0.78rem;
+  opacity: 0.9;
+}
+
+/* --------------------------------------------------------------------------
+   STATS
+   -------------------------------------------------------------------------- */
+.dv-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.dv-stat-card {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 1rem;
+  padding: 1rem 1.1rem;
+  box-shadow: 0 6px 16px -8px rgba(17, 24, 39, 0.12);
+}
+
+.dv-stat-icon {
+  width: 46px;
+  height: 46px;
+  border-radius: 0.9rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: #fff;
+}
+
+.dv-ic-teal { background: linear-gradient(135deg, #14b8a6, #0d9488); }
+.dv-ic-orange { background: linear-gradient(135deg, #fb923c, #f97316); }
+.dv-ic-blue { background: linear-gradient(135deg, #60a5fa, #3b82f6); }
+
+.dv-stat-info {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.dv-stat-info strong {
+  font-size: 1.15rem;
+  color: #111827;
+}
+
+.dv-stat-info span {
+  font-size: 0.82rem;
+  color: #6b7280;
+}
+
+/* --------------------------------------------------------------------------
+   SEÇÕES
+   -------------------------------------------------------------------------- */
+.dv-section {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 1.25rem;
+  padding: 1.5rem;
+  box-shadow: 0 8px 20px -12px rgba(17, 24, 39, 0.12);
+}
+
+.dv-section-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.25rem;
+}
+
+.dv-section-title {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: #0d9488;
+}
+
+.dv-section-title h2 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin: 0;
+}
+
+.dv-section-soft {
+  color: #9ca3af;
+}
+
+.dv-section-sub {
+  font-weight: 800;
+  color: #0d9488;
+  background: #f0fdfa;
+  border-radius: 9999px;
+  padding: 0.3rem 0.9rem;
+  font-size: 0.95rem;
+}
+
+/* --------------------------------------------------------------------------
+   TENDÊNCIA
+   -------------------------------------------------------------------------- */
+.dv-trend {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.5rem;
+  height: 120px;
+  padding: 0 0.25rem;
+}
+
+.dv-trend-bar {
+  flex: 1;
+  border-radius: 0.4rem 0.4rem 0 0;
+  background: linear-gradient(180deg, #14b8a6, #0d9488);
+  opacity: 0.85;
+  transition: opacity 0.18s;
+}
+
+.dv-trend-bar:hover {
+  opacity: 1;
+}
+
+.dv-bar-1 { height: 45%; }
+.dv-bar-2 { height: 60%; }
+.dv-bar-3 { height: 38%; }
+.dv-bar-4 { height: 78%; }
+.dv-bar-5 { height: 52%; }
+.dv-bar-6 { height: 90%; }
+.dv-bar-7 { height: 68%; }
+
+.dv-trend-labels {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.6rem;
+  padding: 0 0.25rem;
+}
+
+.dv-trend-labels span {
+  flex: 1;
+  text-align: center;
+  font-size: 0.72rem;
+  color: #9ca3af;
+}
+
+/* --------------------------------------------------------------------------
+   LISTAS
+   -------------------------------------------------------------------------- */
+.dv-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.dv-list-item {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 0.75rem 1rem;
+  border-radius: 0.75rem;
+  background: #f9fafb;
+  transition: background-color 0.18s;
+}
+
+.dv-list-item:hover {
+  background: #f0fdfa;
+}
+
+.dv-list-avatar {
+  flex-shrink: 0;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #14b8a6, #0d9488);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.dv-list-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.dv-list-info p {
+  margin: 0;
+  font-weight: 600;
+  color: #1f2937;
+  font-size: 0.98rem;
+}
+
+.dv-list-info span {
+  font-size: 0.85rem;
+  color: #6b7280;
+  margin-top: 0.15rem;
+}
+
+.dv-list-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #34d399;
+  box-shadow: 0 0 0 3px rgba(52, 211, 153, 0.2);
+  flex-shrink: 0;
+}
+
+.dv-list-time {
+  font-size: 0.8rem;
+  color: #6b7280;
+  flex-shrink: 0;
+}
+
+/* --------------------------------------------------------------------------
+   LINK
+   -------------------------------------------------------------------------- */
+.dv-link-more {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-top: 0.9rem;
+  color: #0d9488;
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+
+.dv-link-more:hover {
+  text-decoration: underline;
+}
+
+/* ==========================================================================
+   RESPONSIVIDADE
+   ========================================================================== */
+@media (max-width: 768px) {
+  .profissional-dashboard.dv-home-prof {
+    padding: 1.25rem 1rem 2rem;
+    gap: 1.15rem;
+  }
+
+  .dv-hero {
     flex-direction: column;
-    gap: 2rem;
-    margin-top: 40px;
-    margin-bottom: 40px;
-}
+    align-items: flex-start;
+    text-align: left;
+    padding: 1.5rem;
+  }
 
-.dashboard-section {
-    background-color: #fff;
-    padding: 2rem;
-    border-radius: 0.75rem;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-}
+  .dv-hero-badge {
+    flex-direction: row;
+    min-width: 0;
+    width: 100%;
+  }
 
-.section-header {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    margin-bottom: 1.5rem;
-    color: #14b8a6;
-}
-
-.section-header h2 {
-    font-size: 1.5rem;
-    font-weight: 600;
-    margin: 0;
-    color: #1f2937;
-}
-
-.summary-grid {
-    display: grid;
+  .dv-stats {
     grid-template-columns: 1fr;
-    gap: 1.5rem;
+  }
 }
 
-.summary-card {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    background-color: #f9fafb;
-    padding: 1rem;
-    border-radius: 0.5rem;
-}
-
-.summary-card-info h3 {
-    margin: 0;
-    font-size: 1.25rem;
-    font-weight: 700;
-    color: #1f2937;
-}
-
-.summary-card-info p {
-    margin: 0;
-    color: #6b7280;
-    font-size: 0.9rem;
-}
-
-.list-content {
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem; 
-}
-
-.list-item {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    padding: 0.75rem 1rem; 
-    border-radius: 0.5rem;
-    background-color: #f9fafb;
-    cursor: pointer;
-    transition: background-color 0.2s;
-}
-
-.list-item:hover {
-    background-color: #f0fdfa;
-}
-
-.list-item-avatar {
-    flex-shrink: 0;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background-color: #14b8a6;
-    color: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-    font-size: 1rem;
-}
-
-.list-item-info {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.list-item-info p {
-    margin: 0;
-    font-weight: 600;
-    color: #1f2937;
-    font-size: 1rem;
-}
-
-.list-item-info span {
-    font-size: 0.875rem;
-    color: #6b7280;
-    margin-top: 0.2rem;
-}
-
-.list-item-recado {
-    display: flex;
-    justify-content: space-between; 
-    align-items: flex-start; 
-    padding: 0.75rem 1rem;
-    border-radius: 0.5rem;
-    background-color: #f9fafb;
-    transition: background-color 0.2s;
-}
-
-.list-item-recado:hover {
-    background-color: #f0fdfa;
-    cursor: pointer;
-}
-
-.list-item-recado .list-item-info {
-    display: flex;
-    flex-direction: column;
-    gap: 0.25rem;
-}
-
-.list-item-recado .list-item-info p {
-    margin: 0;
-    font-weight: 600;
-    color: #1f2937;
-    font-size: 0.95rem;
-}
-
-.list-item-recado .list-item-info span {
-    font-size: 0.875rem;
-    color: #6b7280;
-}
-
-.view-all-link {
-    display: inline-block;
-    margin-top: 0.5rem;
-    font-size: 0.875rem;
-    color: #14b8a6;
-    font-weight: 500;
-    text-decoration: none;
-}
-
-.view-all-link:hover {
-    text-decoration: underline;
-}
-
-@media (min-width: 768px) {
-    .summary-grid {
-        grid-template-columns: 1fr 1fr 1fr;
-    }
+@media (max-width: 480px) {
+  .dv-section {
+    padding: 1.1rem;
+  }
 }

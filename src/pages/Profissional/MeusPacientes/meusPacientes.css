@@ -245,3 +245,47 @@
   from { opacity: 0; transform: scale(0.95); }
   to { opacity: 1; transform: scale(1); }
 }
+
+/* ===== Responsividade ===== */
+@media (max-width: 768px) {
+  .container-MeusPacientes {
+    padding: 1rem;
+    margin-top: 16px;
+    margin-bottom: 16px;
+  }
+
+  .toolbar-MeusPacientes {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .search-container-MeusPacientes {
+    min-width: 0;
+  }
+
+  .action-btn-MeusPacientes {
+    width: 100%;
+  }
+}
+
+@media (max-width: 640px) {
+  .pacientes-table-MeusPacientes th,
+  .pacientes-table-MeusPacientes td {
+    padding: 0.75rem;
+    font-size: 0.85rem;
+  }
+
+  .paciente-avatar-MeusPacientes {
+    width: 32px;
+    height: 32px;
+  }
+
+  .progress-wrapper {
+    margin-left: 0;
+    min-width: 90px;
+  }
+
+  .modal-content-MeusPacientes {
+    padding: 1.5rem 1.25rem;
+  }
+}

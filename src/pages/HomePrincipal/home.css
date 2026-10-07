@@ -9,14 +9,14 @@
   font-weight: bold;
   color: #1f2937;
   text-align: center;
-  margin-bottom: 3rem;
+  margin-bottom: 1.25rem;
 }
 
 .section-subtitle {
   text-align: center;
   color: #6b7280;
   max-width: 600px;
-  margin: -2rem auto 3rem;
+  margin: 0 auto 3rem;
   font-size: 1.125rem;
 }
 
@@ -24,7 +24,7 @@
 .hero-section {
   text-align: center;
   padding: 6rem 1.5rem;
-  background-color: #e0f2f1; 
+  background-color: #e0f2f1;
 }
 
 .hero-title {
@@ -47,10 +47,17 @@
     background-color: #14b8a6;
     color: #fff;
     font-weight: 600;
-    padding: 0.5rem 1rem;
+    padding: 0.75rem 1.75rem;
     border-radius: 0.5rem;
     text-decoration: none;
-    transition: background-color 0.3s ease-in-out;
+    display: inline-block;
+    transition: background-color 0.3s ease-in-out, transform 0.2s;
+}
+
+.login-button:hover {
+    background-color: #0d9488;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(13, 148, 136, 0.25);
 }
 
 
@@ -180,5 +187,28 @@
   }
   .hero-title {
     font-size: 3.75rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .section {
+    padding: 3rem 1.25rem;
+  }
+  .section-title {
+    font-size: 1.75rem;
+    margin-bottom: 1rem;
+  }
+  .hero-section {
+    padding: 4rem 1.25rem;
+  }
+  .hero-title {
+    font-size: 2.1rem;
+  }
+  .hero-subtitle {
+    font-size: 1.05rem;
+  }
+  .funcionalidades-grid,
+  .depoimentos-grid {
+    grid-template-columns: 1fr;
   }
 }

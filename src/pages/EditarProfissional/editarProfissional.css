@@ -244,3 +244,32 @@
     grid-template-columns: 2fr 1fr;
   }
 }
+
+/* ===== Responsividade mobile ===== */
+@media (max-width: 640px) {
+  .profile-card-EditarProfissional {
+    margin-top: 16px;
+    margin-bottom: 16px;
+  }
+
+  .profile-card-header-EditarProfissional {
+    padding: 1.25rem;
+  }
+
+  .profile-card-body-EditarProfissional {
+    padding: 1.25rem;
+  }
+
+  .profile-actions-EditarProfissional {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    text-align: center;
+  }
+
+  .profile-actions-EditarProfissional button {
+    width: 100%;
+    justify-content: center;
+    margin-left: 0;
+  }
+}

@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { Users, Search, PlusCircle, MoreVertical } from 'lucide-react';
 import './meusPacientes.css';
 import HeaderProfissional from '../../../components/HeaderProfissional/HeaderProfissional';
-import Footer from '../../../components/Footer/Footer';
 
 function Modal({ children, onClose }) {
   return (
@@ -78,7 +77,7 @@ function MeusPacientes() {
 
   return (
     <>
-      <HeaderProfissional />
+      <HeaderProfissional>
       <section className="page-section-MeusPacientes">
         <div className="container-MeusPacientes">
           <div className="section-header-MeusPacientes">
@@ -197,7 +196,7 @@ function MeusPacientes() {
         </Modal>
       )}
 
-      <Footer />
+      </HeaderProfissional>
     </>
   );
 }

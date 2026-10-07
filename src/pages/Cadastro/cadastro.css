@@ -93,3 +93,13 @@
     width: 100%;
   }
 }
+
+@media (max-width: 400px) {
+  .cadastro-form-wrapper {
+    padding: 1.25rem;
+  }
+  .form-group .radio-group {
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+}

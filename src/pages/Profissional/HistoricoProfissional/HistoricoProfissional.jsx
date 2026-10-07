@@ -3,7 +3,6 @@ import { Clock, FileDown, Printer } from 'lucide-react';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
 import './historicoProfissional.css';
-import Footer from '../../../components/Footer/Footer';
 import HeaderProfissional from '../../../components/HeaderProfissional/HeaderProfissional';
 
 function HistoricoProfissional() {
@@ -51,7 +50,7 @@ function HistoricoProfissional() {
 
     return (
         <>
-            <HeaderProfissional />
+            <HeaderProfissional>
             <div>
                 <div className="section-header_historicoPg">
                     <Clock size={24} />
@@ -124,7 +123,7 @@ function HistoricoProfissional() {
                     </div>
                 </div>
             </div>
-            <Footer />
+            </HeaderProfissional>
         </>
     );
 }

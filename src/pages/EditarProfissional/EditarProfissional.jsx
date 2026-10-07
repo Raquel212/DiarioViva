@@ -2,7 +2,6 @@ import { Save, Trash2 } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./editarProfissional.css";
-import Footer from "../../components/Footer/Footer";
 import HeaderProfissional from "../../components/HeaderProfissional/HeaderProfissional";
 
 function EditarPerfilProfissional() {
@@ -85,7 +84,7 @@ function EditarPerfilProfissional() {
 
   return (
     <>
-      <HeaderProfissional />
+      <HeaderProfissional>
 
       {/* Toast */}
       {toast && <div className="toast">{toast}</div>}
@@ -216,7 +215,7 @@ function EditarPerfilProfissional() {
         </div>
       )}
 
-      <Footer />
+      </HeaderProfissional>
     </>
   );
 }

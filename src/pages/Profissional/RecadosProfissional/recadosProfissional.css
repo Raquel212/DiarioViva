@@ -96,3 +96,134 @@
 .comentario-form button:hover {
     background-color: #0d9488;
 }
+
+/* ===== Composer / gerar recado com IA ===== */
+.composer-recados-profissional {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.75rem;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.composer-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+}
+
+.composer-header h3 {
+    margin: 0;
+    font-size: 1rem;
+    color: #374151;
+}
+
+.composer-ai-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    background: linear-gradient(135deg, #14b8a6, #0d9488);
+    color: #fff;
+    border: none;
+    padding: 0.45rem 0.9rem;
+    border-radius: 8px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    flex-shrink: 0;
+}
+
+.composer-ai-btn:hover:not(:disabled) {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 14px rgba(13, 148, 136, 0.35);
+}
+
+.composer-ai-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.composer-recados-profissional textarea {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid #d1d5db;
+    border-radius: 0.5rem;
+    font-size: 0.95rem;
+    font-family: inherit;
+    box-sizing: border-box;
+    resize: vertical;
+}
+
+.composer-recados-profissional textarea:focus {
+    outline: none;
+    border-color: #14b8a6;
+    box-shadow: 0 0 0 3px rgba(20, 184, 166, 0.18);
+}
+
+.composer-error {
+    background: #fef2f2;
+    border: 1px solid #fecaca;
+    color: #b91c1c;
+    padding: 0.55rem 0.75rem;
+    border-radius: 8px;
+    font-size: 0.82rem;
+    margin: 0.6rem 0 0;
+}
+
+.composer-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 0.75rem;
+}
+
+.composer-send-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: #14b8a6;
+    color: #fff;
+    border: none;
+    padding: 0.55rem 1.1rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.composer-send-btn:hover:not(:disabled) {
+    background: #0d9488;
+}
+
+.composer-send-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* ===== Responsividade ===== */
+@media (max-width: 640px) {
+    .page-section-recadosProfissional {
+        padding: 1rem;
+        margin: 1rem auto;
+    }
+
+    .recado-item-recadosProfissional {
+        padding: 1rem;
+    }
+
+    .composer-header {
+        align-items: flex-start;
+    }
+
+    .comentario-form {
+        flex-wrap: wrap;
+    }
+
+    .comentario-form button {
+        width: 100%;
+    }
+}

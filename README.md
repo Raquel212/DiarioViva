@@ -45,9 +45,45 @@ O **DiarioViva** é como um caderno inteligente e colaborativo:
 ## 🛠️ Tecnologias Utilizadas  
 - **Front-End**: React.js, Vite
 - **Linguagem**: JavaScript
+- **IA**: API compatível com OpenAI (OpenAI, OpenRouter etc.)
 - **Hospedagem**: Vercel
 - **Controle de Versão**: GitHub  
 - **Outras Ferramentas**: Visual Studio Code  
+
+---
+
+## ✨ Assistente de IA
+
+O projeto já inclui um **assistente de IA** (botão ✨ flutuante em todas as páginas internas)
+e ações de IA em pontos específicos:
+
+- **Paciente**
+  - Assistente flutuante: dúvidas sobre metas, motivação e bem-estar.
+  - **Diário Pessoal**: botão "Sugestão com IA" que ajuda a escrever a reflexão do dia.
+- **Profissional**
+  - Assistente flutuante: rascunho de recados, sugestão de metas e resumos.
+  - **Gerar recado com IA** na página de Recados.
+  - **Resumo do diário com IA** na página do perfil do paciente.
+
+### Como configurar a chave de API
+
+1. Copie o arquivo `.env.example` para `.env` e preencha suas variáveis:
+
+   ```bash
+   VITE_AI_API_KEY=sk-...
+   VITE_AI_BASE_URL=https://api.openai.com/v1
+   VITE_AI_MODEL=gpt-4o-mini
+   ```
+
+2. Reinicie o servidor (`npm run dev`).
+
+> **Alternativa (sem editar arquivos):** clique no ícone de engrenagem do assistente
+> (canto inferior direito) e cole sua chave + URL + modelo. Isso é salvo no
+> `localStorage` do navegador.
+
+> O projeto é compatível com **OpenRouter** — basta usar
+> `VITE_AI_BASE_URL=https://openrouter.ai/api/v1` e, por exemplo,
+> `VITE_AI_MODEL=openai/gpt-4o-mini`. Não fica nenhuma chave exposta no código.
 
 ---
 
